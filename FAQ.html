@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+
+        dl {
+            margin: 0;
+        }
+
+        dt {
+            background-color: #f9f9f9;
+            color: #333;
+            cursor: pointer;
+            padding: 16px 12px;
+            width: 100%;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background 0.3s ease-in-out;
+            position: relative;
+        }
+
+        dt::before {
+            content: "Q. ";
+            color: #814901;
+            font-weight: bold;
+        }
+
+        dt:hover {
+            background-color: #e0e0e0;
+        }
+
+        dd {
+            padding: 16px 12px;
+            display: none;
+            background-color: #fff;
+            overflow: hidden;
+            margin: 0;
+            transition: max-height 0.3s ease-in-out;
+            position: relative;
+        }
+
+        dd::before {
+            content: "A. ";
+            color: #254a72;
+            font-weight: bold;
+        }
+
+        dd a {
+            color: #007bff;
+            text-decoration: underline;
+        }
+
+        dd a:hover {
+            color: #0056b3;
+        }
+
+        @media screen and (max-width: 600px) {
+            body {
+                font-size: 14px;
+            }
+
+            dt {
+                font-size: 16px;
+            }
+
+            dd {
+                font-size: 14px;
+            }
+
+            h1,
+            h2 {
+                font-size: 18px;
+            }
+
+            dt:hover {
+                background-color: #f9f9f9;
+            }
+        }
+
+        .qa-title {
+            text-align: center;
+            font-size: 28px;
+            padding: 15px 10px;
+            background: #a18c35;
+            color: #fff;
+            margin: 0;
+        }
+
+        h2 {
+            margin: 0;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            
+        }
+        h2 span{  background: linear-gradient(transparent 70%, #a18c35 70%);}
+
+        /* ・を消す＆余白リセット */
+        .toc-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            gap: 20px;
+        }
+
+        /* 行本体（白い大きな角丸ボタン） */
+        .toc-item a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            line-height: 1;
+            text-decoration: none;
+            background: #fff;
+            border-radius: 9999px;
+            padding: 16px 20px 16px 24px;
+            /* 左24 / 右20 */
+            color: #333;
+            font-weight: 700;
+            font-size: 20px;
+            box-shadow: 0 2px 0 rgba(14, 26, 68, 0.05), 0 1px 3px rgba(14, 26, 68, 0.06);
+            border: 1px solid rgba(14, 26, 68, 0.06);
+            transition: transform 0.08s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+            position: relative;
+        }
+
+        .toc-item a:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 18px rgba(14, 26, 68, 0.10);
+            border-color: rgba(14, 26, 68, 0.12);
+        }
+
+        /* 右端の濃紺丸（アイコン用の実要素） */
+        .toc-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #254a72;
+            right: 12px;
+            position: absolute;
+            top: calc((100% - 32px) / 2);
+        }
+
+        /* 丸の中のV字（アウトライン） */
+        .toc-icon::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 10px;
+            height: 10px;
+            border-right: 3px solid #fff;
+            border-bottom: 3px solid #fff;
+            transform: translate(-50%, -50%) rotate(45deg);
+            translate: 0 -1px;
+        }
+
+        /* スマホ用調整 */
+        @media (max-width: 600px) {
+
+            .qa-title {
+                font-size: 20px;
+            }
+
+            .toc-item a {
+                padding: 12px 12px 12px 16px;
+                font-size: 16px;
+            }
+
+            .toc-icon {
+                width: 24px;
+                height: 24px;
+                top: calc((100% - 24px) / 2);
+                right: 10px;
+
+            }
+
+            .toc-icon::before {
+                width: 6px;
+                height: 6px;
+                border-right-width: 2px;
+                border-bottom-width: 2px;
+            }
+        }
+
+        /* 任意：スムーズスクロール */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .wrapper-contents {
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+
+        .questions {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <h1 class="qa-title">しんきゅうコンパス<br />よくある質問</h1>
+        <nav class="toc">
+            <ul class="toc-list">
+                <li class="toc-item">
+                    <a href="#user-questions">
+                        鍼灸院をお探しの方からのご質問
+                        <span class="toc-icon" aria-hidden="true"></span>
+                    </a>
+                </li>
+                <li class="toc-item">
+                    <a href="#compass">
+                        鍼灸院の先生からのご質問
+                        <span class="toc-icon" aria-hidden="true"></span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <section class="wrapper-contents">
+            <div class="questions">
+                <h2 id="user-questions"><span>鍼灸院をお探しの方からのご質問</span></h2>
+                <dl>
+                    <dt>得意なお悩みと対応可能なお悩みの違いは？</dt>
+                    <dd>各鍼灸院が「対応可能なお悩み」の中から、特に得意とするものを「得意なお悩み」として選択しています。</dd>
+
+                    <dt>口コミ投稿の内容や会員情報はどうやって編集すればよいですか？</dt>
+                    <dd>下記からマイページへログインし、口コミや会員情報を更新してください。<br>
+                        https://www.shinq-compass.jp/user</dd>
+
+                    <dt>会員を退会するにはどうすればいいですか？</dt>
+                    <dd>マイページにログイン後、下記より退会手続きを行ってください。<br>
+                        https://www.shinq-compass.jp/user/withdraw</dd>
+
+                    <dt>口コミを削除したい場合はどうすればよいですか？</dt>
+                    <dd>口コミの削除をご希望の場合は、しんきゅうコンパス運営事務局までご連絡ください。<br>
+                        info@shinq-compass.jp</dd>
+
+                    <dt>予約した日時を確認するにはどうすればよいですか？</dt>
+                    <dd>マイページから確認できます。<br>
+                        ゲスト予約の場合は、SMSに送信された予約内容をご確認ください。</dd>
+
+                    <dt>LINEと連携するとどのようなメリットがありますか？</dt>
+                    <dd>予約の前日にLINEでリマインド通知が届くようになります。<br>
+                        また、ログインがLINEから簡単に行えるようになります。</dd>
+                </dl>
+            </div>
+            <div class="questions">
+                <h2 id="compass"><span>鍼灸院の先生からのご質問</span></h2>
+                <dl>
+  <dt>登録しているメールアドレス（ログインID）を変更するには？</dt>
+    <dd>
+        以下の手順で変更できます。<br>
+        1. ダッシュボード内の「基本情報」を開く<br>
+        2. ログインID欄のメールアドレスを編集<br>
+        3. 画面下部の「情報を更新保存する」ボタンを押す
+    </dd>
+
+    <dt>院名を変更するには？</dt>
+    <dd>
+        1. ダッシュボード内の「掲載情報」→「店舗情報ページ編集」を開く<br>
+        2. 「店舗詳細情報」を開く<br>
+        3. 「店舗名」と「フリガナ」を編集<br>
+        4. 画面下部の「情報を更新保存する」ボタンを押す
+    </dd>
+
+    <dt>パスワードを忘れた場合やログインできない場合は？</dt>
+    <dd>以下のURLからパスワードの再設定が可能です。<br>
+        https://www.shinq-compass.jp/login/password/</dd>
+
+    <dt>閉院のため、掲載を停止したい場合は？</dt>
+    <dd>閉院に伴い掲載を停止する場合は、以下のフォームより申請してください。<br>
+        https://forms.gle/kqwpjLy5G1fd71XT8</dd>
+
+    <dt>複数の店舗を切り替えて見れるようにするにはどうすればいいでしょうか？</dt>
+    <dd>以下の手順で複数店舗を紐づける設定ができます。<br>
+        1. ダッシュボードにログイン<br>
+        2. 「店舗切替」内の「店舗アカウントを追加」をクリック<br>
+        3. 紐づける店舗の情報を入力<br>
+        　- 管理用ID（メールアドレス）<br>
+        　- 管理用パスワード<br>
+        　- 連携パスコード<br>
+
+        ※新しい店舗の登録自体は、あらかじめ「新店舗」としての登録が必要です。
+        登録はこちらからお願いいたします。<br>
+        https://www.shinq-compass.jp/entry/register</dd>
+
+    <dt>有料プランに登録した場合、クレジットカードの引き落としはいつになりますか？</dt>
+    <dd>ご利用日としては登録日当日から適用されます。<br>
+        実際の引き落とし日は、ご利用のクレジットカード会社の処理タイミングによって異なります。</dd>
+
+    <dt>資料を請求したい。</dt>
+    <dd>以下のURLから、しんきゅうコンパスのサービス内容をご確認いただけます。<br>
+        https://www.shinq-compass.jp/entry/register</dd>
+
+    <dt>有料と無料の違いは？</dt>
+    <dd>以下のURLから、有料・無料プランの比較をご確認いただけます。<br>
+        https://www.shinq-compass.jp/info/option_info</dd>
+
+    <dt>店舗掲載登録をしているがログインできない。</dt>
+    <dd>以下のURLからログインが可能です。<br>
+        https://www.shinq-compass.jp/login/</dd>
+
+    <dt>リンクを設置したのにポイントが反映されない。</dt>
+    <dd>HPやGoogleなど外部サイトに設置されたリンクについては、弊社で確認後、手動でポイントを付与します。<br>
+        リンク設置完了後は事務局までご連絡ください。</dd>
+
+    <dt>新プランとこれまでの違いは？</dt>
+    <dd>下記URLからご確認いただけます。<br>
+        https://www.shinq-compass.jp/info/option_info</dd>
+
+    <dt>プランをアップグレードした場合、料金はどのように変更されますか？</dt>
+    <dd>プランのアップグレードは即時反映されます。<br>
+        月払い → 月払いプランのまま差額を日割り請求し、次回更新時から新プラン料金が適用されます。<br>
+        年払い → 年払いプランのまま差額を日割り請求し、次回更新時から新プラン料金が適用されます。</dd>
+
+    <dt>新しいプランが出ましたが、自動的にアップグレードされますか？</dt>
+    <dd>いいえ。新しいプランが出ても自動で変更されることはありません。<br>
+        現在のプランはそのまま継続されます。アップグレードをご希望の場合は、お申し込みが必要です。</dd>
+
+    <dt>年払いプランを利用しています。ダウングレードは可能ですか？</dt>
+    <dd>年払いプランの場合、ダウングレードは可能ですが、反映されるのは次回の契約更新月（翌年の更新時）からとなります。<br>
+        現在の契約期間中は、引き続きご利用中のプランが適用されます。</dd>
+
+    <dt>口コミのポイントはどう加点されますか？</dt>
+    <dd>直近2年以内に投稿された口コミが加点対象です。</dd>
+
+    <dt>口コミを削除したい場合は？</dt>
+    <dd>
+        口コミの削除は基本的に弊社でのみ対応可能です。<br>
+        原則として先生からの依頼による削除は承っておりませんが、内容に問題がある場合（誹謗中傷・事実誤認など）はご相談ください。<br>
+        ※患者様ご自身による口コミの編集は可能です。
+    </dd>
+
+    <dt>アクセス数を増やすには？</dt>
+    <dd>検索優先ポイントを集めることで検索順位が上がります。<br>
+        有料プランをご利用中の方は、コンサルタントからアドバイスを受けられますのでご連絡ください。</dd>
+
+    <dt>マップピンの位置が正しくない。</dt>
+    <dd>システム仕様上、ピンの位置が完全に正確でない場合があります。<br>
+        修正は可能ですので、正しく表示されない場合は事務局までご連絡ください。</dd>
+
+    <dt>店舗の住所が変わる場合は？</dt>
+    <dd>
+        1. ダッシュボード内の「掲載情報」→「店舗情報ページ編集」を開く<br>
+        2. 「店舗詳細情報」を開く<br>
+        3. 店舗所在地を変更し、「店舗住所からエリア・最寄駅を取得」ボタンで最寄駅を更新<br>
+        4. 画面下部の「情報を更新保存する」ボタンを押す<br>
+        ※マップピンが正しく修正されない場合は事務局までご連絡ください。
+    </dd>
+
+    <dt>予約フォームの受信先メールアドレスを変更するには？</dt>
+    <dd>
+        1. 「基本情報」ページを開く<br>
+        2. 「予約フォームからのメール受信設定」欄のメールアドレスを変更<br>
+        3. 「情報を更新保存する」ボタンを押す
+    </dd>
+
+    <dt>ネット予約を利用するには？</dt>
+    <dd>しんきゅう予約のダッシュボードから「非公開中」ボタンをクリックし、「公開する」を選択すると利用可能になります。</dd>
+
+    <dt>予約フォームを使いたい場合は？</dt>
+    <dd>「公開中」ボタンをクリックし「非公開にしますか？」を選択すると、自動的に予約フォームに切り替わります。</dd>
+
+    <dt>ネット予約を完全に削除できますか？</dt>
+    <dd>ネット予約を完全に削除することはできません。患者様の最終的な連絡手段を確保するための仕様です。</dd>
+
+    <dt>しんきゅう予約の初期設定について知りたい。</dt>
+    <dd>初期設定手順は下記URLに掲載しています。<br>
+        https://drive.google.com/file/d/1Bx85IUV-3ystjElplocxX47BPDP9iKq_/view?usp=drive_link</dd>
+
+    <dt>登録件数にはブロックも含まれますか？</dt>
+    <dd>はい。以下の3つがカウント対象です。<br>
+        ・患者様が「しんきゅう予約」で行った予約<br>
+        ・先生が「予約管理ダッシュボード」の「新規登録」で入力した予約<br>
+        ・先生が「予約管理ダッシュボード」の「予約ブロック」で登録した件数
+    </dd>
+
+    <dt>予約件数の上限はどのタイミングで更新されますか？</dt>
+    <dd>毎月1日に更新されます。</dd>
+
+    <dt>ゲスト予約をした患者様がキャンセルしたい場合は？</dt>
+    <dd>ゲスト予約はマイページに紐づいていないため、ネット上でのキャンセルはできません。</dd>
+
+    <dt>カレンダーの登録件数が上限に達した場合は？</dt>
+    <dd>新規予約を受け付けできなくなり、患者様が予約できない状態になります。</dd>
+
+    <dt>来院予定の患者様にリマインドメールを送れますか？</dt>
+    <dd>リマインドメールは会員登録済みの患者様にのみ送信されます。<br>
+        ゲスト予約の場合は予約確定時にのみSMSが送信され、リマインドは送られません。<br>
+        送信タイミングはダッシュボードで設定可能です。
+    </dd>
+
+    <dt>予約枠が空いているのに「×」と表示されるのはなぜ？</dt>
+    <dd>
+        以下の理由が考えられます。<br>
+        ・スタッフのシフトが未設定<br>
+        → 対応できるスタッフのシフトが登録されていないと「×」表示になります。<br>
+        ・閉店間際の予約枠<br>
+        → 営業終了時間に施術が収まらない場合は「×」と表示されます。
+    </dd>
+
+    <dt>最終予約の時間設定はできますか？</dt>
+    <dd>一律の設定はできませんが、「スタッフ管理」の設定で同じ時間に揃えることが可能です。<br>
+        https://drive.google.com/file/d/1dIJB2J4gmRZscDUrOMH7Xy8uWKz_6PjR/view?usp=sharing</dd>
+
+    <dt>予約フォームから不審な予約が入りました</dt>
+    <dd>現在確認されている事象として、海外からのアクセスによるスパム（自動送信）の可能性が高いと考えております。<br>
+        当該予約については、返信や個別対応を行っていただく必要はございません。<br>
+        ご不安な点がございましたら、下記までお気軽にお問い合わせください。<br>
+        info@shinq-compass.jp</dd>
+
+    <dt>領収書が欲しい場合は？</dt>
+    <dd>「利用状況」ページの「領収書印刷」から確認・印刷できます。</dd>
+
+    <dt>メルマガの配信を停止するには？</dt>
+    <dd>下記URLから配信停止設定が可能です。<br>
+        https://y.bmd.jp/bm/p/f/tf.php?id=compass2&task=cancel</dd>
+
+    <dt>患者様側での利用方法を知りたい。</dt>
+    <dd>ユーザー向け利用方法は下記URLに掲載しています。<br>
+        https://drive.google.com/file/d/1-hAiLJaYkX4xuqZ5gqZsLAXa-3K7BGwE/view?usp=drive_link</dd>
+
+    <dt>管理画面の推奨環境は？</dt>
+    <dd>
+        以下の環境でのご利用を推奨しています。<br>
+        これ以外では正しく表示・動作しない場合があります。<br>
+        ＜PC環境＞<br>
+        ✅ WindowsOS<br>
+        ・Microsoft Edge（最新版）<br>
+        ・Google Chrome（最新版）<br>
+        ✅ MacOS<br>
+        ・Safari（最新版）<br>
+        ・Google Chrome（最新版）
+    </dd>
+
+    <dt>システムの不具合かもしれないと思ったら？</dt>
+    <dd>不具合の可能性を感じた場合は、事務局までご連絡ください。</dd>
+                </dl>
+            </div>
+        </section>
+    </div>
+
+
+    <script>
+        document.querySelectorAll("dt").forEach(item => {
+            item.addEventListener("click", function () {
+                let dd = this.nextElementSibling;
+
+                // すでに表示されてるかどうかチェック
+                let isOpen = dd.style.display === "block";
+
+                // すべてのddを閉じる＆dtからactiveを外す
+                document.querySelectorAll("dd").forEach(el => el.style.display = "none");
+                document.querySelectorAll("dt").forEach(el => el.classList.remove("active"));
+
+                // もし今クリックしたddが閉じてたら、開く（＝toggle）
+                if (!isOpen) {
+                    dd.style.display = "block";
+                    this.classList.add("active");
+                }
+            });
+        });
+
+        // リンク自動変換はそのまま
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll("dd").forEach(dd => {
+                dd.innerHTML = dd.innerHTML.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank">$1</a>');
+            });
+        });
+    </script>
+</body>
+
+</html>
