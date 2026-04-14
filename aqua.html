@@ -20,6 +20,7 @@
     --text: #2a2620;
     --text-light: #7a7060;
     --white: #fdfaf4;
+    --header-h: 64px;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -29,6 +30,7 @@
     color: var(--text);
     overflow-x: hidden;
   }
+  img { max-width: 100%; display: block; }
   .gold-line {
     display: inline-block;
     width: 40px;
@@ -45,16 +47,18 @@
     color: var(--gold);
     text-transform: uppercase;
   }
+
   /* ===== HEADER ===== */
   header {
     position: fixed;
     top: 0; left: 0; right: 0;
-    z-index: 100;
-    padding: 16px 40px;
+    z-index: 200;
+    height: var(--header-h);
+    padding: 0 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: rgba(14, 13, 11, 0.92);
+    background: rgba(14, 13, 11, 0.96);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(201, 168, 76, 0.2);
   }
@@ -81,16 +85,88 @@
     color: rgba(245,230,188,0.7);
     text-decoration: none;
     transition: color 0.3s;
+    white-space: nowrap;
   }
   nav a:hover { color: var(--gold-light); }
   .header-cta {
-    background: var(--gold);
+    background: var(--gold) !important;
     color: var(--dark) !important;
-    padding: 8px 20px;
-    font-weight: 600;
+    padding: 8px 20px !important;
+    font-weight: 600 !important;
     transition: background 0.3s !important;
   }
-  .header-cta:hover { background: var(--gold-light) !important; }
+  .header-cta:hover { background: var(--gold-light) !important; color: var(--dark) !important; }
+
+  /* ハンバーガー */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+    z-index: 300;
+  }
+  .hamburger span {
+    display: block;
+    width: 100%;
+    height: 1.5px;
+    background: var(--gold-light);
+    transition: all 0.3s;
+    transform-origin: center;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* モバイルメニュー */
+  .mobile-nav {
+    display: none;
+    position: fixed;
+    top: var(--header-h);
+    left: 0; right: 0;
+    background: rgba(14,13,11,0.98);
+    border-top: 1px solid rgba(201,168,76,0.15);
+    flex-direction: column;
+    padding: 24px 28px 32px;
+    gap: 0;
+    z-index: 190;
+    transform: translateY(-10px);
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: none;
+  }
+  .mobile-nav.open {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .mobile-nav a {
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    color: rgba(245,230,188,0.8);
+    text-decoration: none;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+    transition: color 0.2s;
+  }
+  .mobile-nav a:hover { color: var(--gold-light); }
+  .mobile-nav .mobile-cta {
+    margin-top: 20px;
+    background: var(--gold);
+    color: var(--dark);
+    text-align: center;
+    padding: 16px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border-bottom: none;
+  }
+
   /* ===== HERO ===== */
   .hero {
     min-height: 100vh;
@@ -99,12 +175,13 @@
     grid-template-columns: 1fr 1fr;
     position: relative;
     overflow: hidden;
+    padding-top: var(--header-h);
   }
   .hero-left {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 120px 60px 80px 80px;
+    padding: 60px 60px 80px 80px;
     position: relative;
     z-index: 2;
   }
@@ -127,7 +204,7 @@
   }
   .hero-catch {
     font-family: 'Shippori Mincho', serif;
-    font-size: clamp(1rem, 1.5vw, 1.1rem);
+    font-size: clamp(0.85rem, 1.3vw, 1.1rem);
     font-weight: 400;
     color: var(--gold);
     letter-spacing: 0.2em;
@@ -136,7 +213,7 @@
   }
   .hero-title {
     font-family: 'Shippori Mincho', serif;
-    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-size: clamp(1.8rem, 3.5vw, 3rem);
     font-weight: 800;
     color: var(--white);
     line-height: 1.4;
@@ -157,7 +234,7 @@
     border-left: 2px solid var(--gold);
     padding-left: 16px;
   }
-  .hero-cta-wrap { display: flex; gap: 16px; flex-direction: column; max-width: 280px; }
+  .hero-cta-wrap { display: flex; gap: 16px; flex-direction: column; max-width: 300px; }
   .btn-primary {
     background: var(--gold);
     color: var(--dark);
@@ -221,6 +298,7 @@
   .hero-right {
     position: relative;
     overflow: hidden;
+    min-height: 400px;
   }
   .hero-img {
     width: 100%;
@@ -247,6 +325,7 @@
     z-index: 2;
     white-space: nowrap;
   }
+
   /* ===== CONCERN ===== */
   .concern {
     background: var(--dark2);
@@ -263,11 +342,9 @@
     color: rgba(201,168,76,0.04);
     letter-spacing: 0.2em;
     line-height: 1;
+    pointer-events: none;
   }
-  .concern-inner {
-    max-width: 1000px;
-    margin: 0 auto;
-  }
+  .concern-inner { max-width: 1000px; margin: 0 auto; }
   .section-header {
     display: flex;
     align-items: center;
@@ -278,26 +355,24 @@
     flex: 1;
     height: 1px;
     background: linear-gradient(to right, rgba(201,168,76,0.5), transparent);
+    min-width: 40px;
   }
   .section-title-jp {
     font-family: 'Shippori Mincho', serif;
-    font-size: clamp(1.2rem, 2vw, 1.6rem);
+    font-size: clamp(1.1rem, 2vw, 1.6rem);
     font-weight: 600;
     color: var(--white);
     letter-spacing: 0.1em;
   }
   .concern-lead {
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: rgba(253,250,244,0.6);
     line-height: 2.4;
     letter-spacing: 0.08em;
     margin-bottom: 60px;
     max-width: 600px;
   }
-  .concern-lead strong {
-    color: var(--gold-light);
-    font-weight: 600;
-  }
+  .concern-lead strong { color: var(--gold-light); font-weight: 600; }
   .concern-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -327,17 +402,14 @@
     flex-shrink: 0;
     margin-top: 2px;
   }
-  .concern-check::after {
-    content: '✓';
-    color: var(--gold);
-    font-size: 0.7rem;
-  }
+  .concern-check::after { content: '✓'; color: var(--gold); font-size: 0.7rem; }
   .concern-text {
     font-size: 0.82rem;
     color: rgba(253,250,244,0.75);
     letter-spacing: 0.08em;
     line-height: 1.7;
   }
+
   /* ===== FEATURE ===== */
   .feature {
     background: var(--cream);
@@ -355,12 +427,12 @@
     color: rgba(201,168,76,0.05);
     letter-spacing: 0.1em;
     line-height: 1;
+    pointer-events: none;
   }
   .feature-inner { max-width: 1100px; margin: 0 auto; }
   .feature-header { margin-bottom: 80px; }
   .feature-header .section-label { margin-bottom: 12px; display: block; }
-  .feature-header .section-title-jp { color: var(--text); font-size: clamp(1.3rem, 2.2vw, 1.8rem); }
-  .feature-header .section-header-line { background: linear-gradient(to right, rgba(201,168,76,0.6), transparent); }
+  .feature-header .section-title-jp { color: var(--text); font-size: clamp(1.2rem, 2.2vw, 1.8rem); }
   .feature-main {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -369,23 +441,16 @@
     margin-bottom: 80px;
   }
   .feature-img-wrap { position: relative; }
-  .feature-img-main {
-    width: 100%;
-    aspect-ratio: 4/3;
-    object-fit: cover;
-    display: block;
-  }
+  .feature-img-main { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
   .feature-img-accent {
     position: absolute;
     width: 45%;
     aspect-ratio: 1;
-    bottom: -24px;
-    right: -24px;
+    bottom: -24px; right: -24px;
     border: 4px solid var(--cream);
     object-fit: cover;
     display: block;
   }
-  .feature-content {}
   .feature-tag {
     display: inline-block;
     background: var(--gold);
@@ -398,7 +463,7 @@
   }
   .feature-title {
     font-family: 'Shippori Mincho', serif;
-    font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+    font-size: clamp(1rem, 1.8vw, 1.4rem);
     font-weight: 600;
     color: var(--text);
     line-height: 1.6;
@@ -474,12 +539,8 @@
     line-height: 1.5;
     margin-bottom: 8px;
   }
-  .care-text {
-    font-size: 0.7rem;
-    color: var(--text-light);
-    line-height: 1.7;
-    letter-spacing: 0.04em;
-  }
+  .care-text { font-size: 0.7rem; color: var(--text-light); line-height: 1.7; letter-spacing: 0.04em; }
+
   /* ===== RESULTS ===== */
   .results {
     background: var(--dark2);
@@ -496,15 +557,11 @@
     font-weight: 300;
     color: rgba(201,168,76,0.04);
     letter-spacing: 0.2em;
-    line-height: 1;
+    pointer-events: none;
   }
   .results-inner { max-width: 1100px; margin: 0 auto; }
   .results-header { margin-bottom: 60px; }
-  .results-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-  }
+  .results-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
   .result-card {
     border: 1px solid rgba(201,168,76,0.15);
     overflow: hidden;
@@ -516,58 +573,30 @@
     transform: translateY(-4px);
     box-shadow: 0 16px 48px rgba(0,0,0,0.3);
   }
-  .result-img {
-    width: 100%;
-    aspect-ratio: 16/9;
-    object-fit: cover;
-    display: block;
-  }
+  .result-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; }
   .result-caption {
     padding: 16px 20px;
     display: flex;
     align-items: center;
     gap: 10px;
   }
-  .result-caption-dot {
-    width: 6px;
-    height: 6px;
-    background: var(--gold);
-    flex-shrink: 0;
-  }
-  .result-caption-text {
-    font-size: 0.75rem;
-    color: rgba(253,250,244,0.6);
-    letter-spacing: 0.1em;
-  }
+  .result-caption-dot { width: 6px; height: 6px; background: var(--gold); flex-shrink: 0; }
+  .result-caption-text { font-size: 0.75rem; color: rgba(253,250,244,0.6); letter-spacing: 0.1em; }
+
   /* ===== VOICE ===== */
-  .voice {
-    background: var(--dark3);
-    padding: 100px 80px;
-    position: relative;
-  }
+  .voice { background: var(--dark3); padding: 100px 80px; position: relative; }
   .voice-inner { max-width: 1000px; margin: 0 auto; }
   .voice-header { margin-bottom: 60px; }
   .voice-header .section-title-jp { color: var(--white); }
-  .voice-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-  }
+  .voice-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
   .voice-card {
     background: rgba(255,255,255,0.03);
     border: 1px solid rgba(201,168,76,0.12);
     padding: 32px 28px;
     position: relative;
   }
-  .voice-stars {
-    display: flex;
-    gap: 3px;
-    margin-bottom: 16px;
-  }
-  .voice-stars span {
-    color: var(--gold);
-    font-size: 0.9rem;
-  }
+  .voice-stars { display: flex; gap: 3px; margin-bottom: 16px; }
+  .voice-stars span { color: var(--gold); font-size: 0.9rem; }
   .voice-text {
     font-size: 0.8rem;
     line-height: 2;
@@ -583,8 +612,7 @@
     border-top: 1px solid rgba(201,168,76,0.1);
   }
   .voice-avatar {
-    width: 36px;
-    height: 36px;
+    width: 36px; height: 36px;
     background: rgba(201,168,76,0.15);
     border-radius: 50%;
     display: flex;
@@ -592,17 +620,10 @@
     justify-content: center;
     font-size: 0.7rem;
     color: var(--gold);
+    flex-shrink: 0;
   }
-  .voice-name {
-    font-size: 0.75rem;
-    color: var(--gold-light);
-    letter-spacing: 0.1em;
-  }
-  .voice-meta {
-    font-size: 0.65rem;
-    color: rgba(253,250,244,0.4);
-    margin-top: 2px;
-  }
+  .voice-name { font-size: 0.75rem; color: var(--gold-light); letter-spacing: 0.1em; }
+  .voice-meta { font-size: 0.65rem; color: rgba(253,250,244,0.4); margin-top: 2px; }
   .voice-quote {
     position: absolute;
     top: 20px; right: 24px;
@@ -611,18 +632,13 @@
     color: rgba(201,168,76,0.12);
     line-height: 1;
   }
+
   /* ===== MENU ===== */
-  .menu {
-    background: var(--cream2);
-    padding: 100px 80px;
-  }
+  .menu { background: var(--cream2); padding: 100px 80px; }
   .menu-inner { max-width: 900px; margin: 0 auto; }
   .menu-header { margin-bottom: 60px; }
   .menu-header .section-label { margin-bottom: 12px; display: block; }
-  .menu-cards {
-    display: grid;
-    gap: 24px;
-  }
+  .menu-cards { display: grid; gap: 24px; }
   .menu-card {
     background: var(--white);
     border: 1px solid rgba(201,168,76,0.2);
@@ -655,6 +671,7 @@
     padding: 4px 10px;
     white-space: nowrap;
     font-weight: 600;
+    align-self: start;
   }
   .menu-badge.new { background: var(--gold); color: var(--dark); }
   .menu-name {
@@ -666,12 +683,7 @@
     line-height: 1.5;
     margin-bottom: 6px;
   }
-  .menu-desc {
-    font-size: 0.72rem;
-    color: var(--text-light);
-    letter-spacing: 0.06em;
-    line-height: 1.7;
-  }
+  .menu-desc { font-size: 0.72rem; color: var(--text-light); letter-spacing: 0.06em; line-height: 1.7; }
   .menu-price-wrap { text-align: right; flex-shrink: 0; }
   .menu-price {
     font-family: 'Cormorant Garamond', serif;
@@ -681,19 +693,10 @@
     letter-spacing: -0.01em;
   }
   .menu-price small { font-size: 0.9rem; color: var(--text-light); font-family: 'Noto Serif JP', serif; }
-  .menu-time {
-    font-size: 0.7rem;
-    color: var(--text-light);
-    margin-top: 4px;
-    letter-spacing: 0.08em;
-  }
+  .menu-time { font-size: 0.7rem; color: var(--text-light); margin-top: 4px; letter-spacing: 0.08em; }
+
   /* ===== DOCTOR ===== */
-  .doctor {
-    background: var(--dark);
-    padding: 100px 80px;
-    position: relative;
-    overflow: hidden;
-  }
+  .doctor { background: var(--dark); padding: 100px 80px; position: relative; overflow: hidden; }
   .doctor-inner {
     max-width: 1000px;
     margin: 0 auto;
@@ -703,12 +706,7 @@
     align-items: center;
   }
   .doctor-img-wrap { position: relative; }
-  .doctor-img {
-    width: 100%;
-    aspect-ratio: 3/4;
-    object-fit: cover;
-    display: block;
-  }
+  .doctor-img { width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block; }
   .doctor-img-label {
     position: absolute;
     bottom: -1px; left: 0; right: 0;
@@ -720,7 +718,6 @@
     letter-spacing: 0.12em;
     text-align: center;
   }
-  .doctor-content {}
   .doctor-content .section-label { margin-bottom: 12px; display: block; }
   .doctor-name {
     font-family: 'Shippori Mincho', serif;
@@ -730,12 +727,7 @@
     letter-spacing: 0.1em;
     margin-bottom: 8px;
   }
-  .doctor-name-kana {
-    font-size: 0.7rem;
-    color: var(--gold);
-    letter-spacing: 0.2em;
-    margin-bottom: 32px;
-  }
+  .doctor-name-kana { font-size: 0.7rem; color: var(--gold); letter-spacing: 0.2em; margin-bottom: 32px; }
   .doctor-message {
     font-size: 0.83rem;
     line-height: 2.4;
@@ -745,11 +737,7 @@
     border-left: 2px solid rgba(201,168,76,0.3);
     padding-left: 20px;
   }
-  .licenses {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
+  .licenses { display: flex; flex-direction: column; gap: 8px; }
   .license-item {
     display: flex;
     align-items: center;
@@ -758,17 +746,10 @@
     color: rgba(253,250,244,0.6);
     letter-spacing: 0.08em;
   }
-  .license-dot {
-    width: 4px;
-    height: 4px;
-    background: var(--gold);
-    flex-shrink: 0;
-  }
+  .license-dot { width: 4px; height: 4px; background: var(--gold); flex-shrink: 0; }
+
   /* ===== ACCESS ===== */
-  .access {
-    background: var(--cream);
-    padding: 100px 80px;
-  }
+  .access { background: var(--cream); padding: 100px 80px; }
   .access-inner {
     max-width: 1000px;
     margin: 0 auto;
@@ -796,17 +777,7 @@
     flex-shrink: 0;
     padding-top: 2px;
   }
-  .access-val {
-    font-size: 0.82rem;
-    color: var(--text);
-    letter-spacing: 0.06em;
-    line-height: 1.8;
-  }
-  .map-placeholder {
-    width: 100%;
-    height: 320px;
-    border: 1px solid rgba(201,168,76,0.2);
-  }
+  .access-val { font-size: 0.82rem; color: var(--text); letter-spacing: 0.06em; line-height: 1.8; }
   .hours-grid {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -817,6 +788,7 @@
   }
   .hours-grid .day { color: var(--text-light); }
   .hours-grid .time { font-weight: 600; }
+
   /* ===== CTA ===== */
   .cta-section {
     background: var(--dark);
@@ -846,7 +818,7 @@
   }
   .cta-title {
     font-family: 'Shippori Mincho', serif;
-    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
     font-weight: 800;
     color: var(--white);
     letter-spacing: 0.08em;
@@ -866,13 +838,7 @@
     padding: 20px 48px;
     margin-bottom: 32px;
   }
-  .cta-price-label {
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    color: var(--gold);
-    display: block;
-    margin-bottom: 8px;
-  }
+  .cta-price-label { font-size: 0.65rem; letter-spacing: 0.2em; color: var(--gold); display: block; margin-bottom: 8px; }
   .cta-price {
     font-family: 'Cormorant Garamond', serif;
     font-size: 3rem;
@@ -880,12 +846,7 @@
     line-height: 1;
   }
   .cta-price small { font-size: 1rem; color: rgba(253,250,244,0.5); font-family: 'Noto Serif JP', serif; }
-  .cta-price-sub {
-    font-size: 0.7rem;
-    color: rgba(253,250,244,0.4);
-    margin-top: 6px;
-    letter-spacing: 0.1em;
-  }
+  .cta-price-sub { font-size: 0.7rem; color: rgba(253,250,244,0.4); margin-top: 6px; letter-spacing: 0.1em; }
   .cta-btn { max-width: 360px; margin: 0 auto; }
   .btn-large {
     display: block;
@@ -901,6 +862,7 @@
     text-align: center;
   }
   .btn-large:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(201,168,76,0.3); }
+
   /* ===== FOOTER ===== */
   footer {
     background: var(--dark2);
@@ -917,38 +879,12 @@
     color: var(--gold-light);
     letter-spacing: 0.1em;
   }
-  .footer-copy {
-    font-size: 0.65rem;
-    color: rgba(253,250,244,0.3);
-    letter-spacing: 0.1em;
-  }
-  /* ===== RESPONSIVE ===== */
-  @media (max-width: 900px) {
-    header { padding: 14px 20px; }
-    nav { display: none; }
-    .hero { grid-template-columns: 1fr; }
-    .hero-left { padding: 100px 28px 60px; }
-    .hero-right { display: none; }
-    .concern, .feature, .results, .voice, .menu, .doctor, .access, .cta-section { padding: 70px 28px; }
-    .concern-grid { grid-template-columns: 1fr; }
-    .results-grid { grid-template-columns: 1fr; }
-    .voice-grid { grid-template-columns: 1fr; }
-    .cares-grid { grid-template-columns: repeat(2, 1fr); }
-    .feature-main { grid-template-columns: 1fr; }
-    .doctor-inner { grid-template-columns: 1fr; }
-    .access-inner { grid-template-columns: 1fr; }
-    .menu-card { grid-template-columns: 1fr; gap: 16px; }
-    footer { flex-direction: column; gap: 12px; text-align: center; padding: 30px 28px; }
-    .hero-numbers { flex-wrap: wrap; gap: 20px; }
-  }
+  .footer-copy { font-size: 0.65rem; color: rgba(253,250,244,0.3); letter-spacing: 0.1em; }
+
   /* ===== ANIMATIONS ===== */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
   }
   .hero-badge { animation: fadeUp 0.8s ease forwards; }
   .hero-catch { animation: fadeUp 0.8s 0.15s ease both; }
@@ -956,6 +892,141 @@
   .hero-sub { animation: fadeUp 0.8s 0.35s ease both; }
   .hero-cta-wrap { animation: fadeUp 0.8s 0.45s ease both; }
   .hero-numbers { animation: fadeUp 0.8s 0.55s ease both; }
+
+  /* =====================================================
+     RESPONSIVE BREAKPOINTS
+     ===================================================== */
+
+  /* ── Tablet: 768px〜1024px ── */
+  @media (max-width: 1024px) {
+    header { padding: 0 28px; }
+    nav { gap: 18px; }
+    nav a { font-size: 0.7rem; }
+    .hero { grid-template-columns: 3fr 2fr; }
+    .hero-left { padding: 60px 40px 60px 48px; }
+    .concern, .feature, .results, .voice, .menu, .doctor, .access, .cta-section { padding: 80px 48px; }
+    .cares-grid { grid-template-columns: repeat(3, 1fr); }
+    .feature-main { gap: 40px; }
+    .doctor-inner { grid-template-columns: 280px 1fr; gap: 48px; }
+  }
+
+  /* ── Small Tablet: 768px〜900px ── */
+  @media (max-width: 900px) {
+    /* ヘッダー */
+    header { padding: 0 20px; }
+    nav { display: none; }
+    .hamburger { display: flex; }
+
+    /* ヒーロー */
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 48px 24px 56px; }
+    .hero-right { min-height: 260px; }
+    .hero-overlay { background: linear-gradient(to bottom, var(--dark) 0%, transparent 40%); }
+    .hero-numbers { flex-wrap: wrap; gap: 20px 32px; }
+
+    /* セクション共通 */
+    .concern, .feature, .results, .voice, .menu, .doctor, .access, .cta-section { padding: 72px 24px; }
+    .concern::before { left: 24px; font-size: 4rem; }
+
+    /* コンサーン */
+    .concern-grid { grid-template-columns: repeat(2, 1fr); }
+
+    /* フィーチャー */
+    .feature::after { font-size: 5rem; }
+    .feature-main { grid-template-columns: 1fr; gap: 40px; }
+    .feature-img-accent { right: -12px; bottom: -12px; }
+    .cares-grid { grid-template-columns: repeat(3, 1fr); }
+
+    /* ビフォーアフター */
+    .results-grid { grid-template-columns: 1fr; }
+
+    /* お客様の声 */
+    .voice-grid { grid-template-columns: 1fr; gap: 16px; }
+
+    /* メニュー */
+    .menu-card {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    .menu-price-wrap { text-align: left; }
+
+    /* ドクター */
+    .doctor-inner { grid-template-columns: 1fr; gap: 40px; }
+    .doctor-img-wrap { max-width: 280px; }
+
+    /* アクセス */
+    .access-inner { grid-template-columns: 1fr; gap: 40px; }
+
+    /* フッター */
+    footer { flex-direction: column; gap: 12px; text-align: center; padding: 28px 24px; }
+  }
+
+  /* ── Mobile: ~599px ── */
+  @media (max-width: 599px) {
+    :root { --header-h: 56px; }
+
+    /* ヘッダー */
+    .logo { font-size: 0.88rem; }
+    .logo small { font-size: 0.6rem; }
+
+    /* ヒーロー */
+    .hero-left { padding: 40px 20px 48px; }
+    .hero-badge span { font-size: 0.62rem; }
+    .hero-title { font-size: 1.65rem; }
+    .hero-sub { font-size: 0.78rem; }
+    .hero-cta-wrap { max-width: 100%; }
+    .btn-primary, .btn-secondary { font-size: 0.82rem; padding: 15px 24px; }
+    .hero-numbers { gap: 16px 24px; margin-top: 36px; padding-top: 24px; }
+    .hero-num-value { font-size: 1.8rem; }
+    .hero-right { min-height: 200px; }
+
+    /* コンサーン */
+    .concern, .feature, .results, .voice, .menu, .doctor, .access, .cta-section { padding: 60px 20px; }
+    .concern-grid { grid-template-columns: 1fr; }
+    .concern-lead { font-size: 0.85rem; margin-bottom: 40px; }
+    .concern-item { padding: 20px 18px; }
+
+    /* フィーチャー */
+    .cares-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .care-card { padding: 20px 12px; }
+    .feature-header { margin-bottom: 48px; }
+
+    /* セクションヘッダー */
+    .section-header { gap: 12px; margin-bottom: 40px; }
+    .section-header-line { min-width: 20px; }
+
+    /* ビフォーアフター */
+    .results-grid { gap: 16px; }
+
+    /* メニュー */
+    .menu-card { padding: 24px 20px; }
+    .menu-price { font-size: 1.5rem; }
+
+    /* ドクター */
+    .doctor-img-wrap { max-width: 240px; }
+    .doctor-name { font-size: 1.4rem; }
+
+    /* CTA */
+    .cta-price-box { padding: 18px 28px; }
+    .cta-price { font-size: 2.4rem; }
+    .cta-sub { font-size: 0.78rem; }
+    .btn-large { font-size: 0.85rem; padding: 18px 32px; }
+
+    /* アクセス */
+    .access-row { flex-direction: column; gap: 6px; }
+    .access-key { width: auto; }
+  }
+
+  /* ── Tiny Mobile: ~374px ── */
+  @media (max-width: 374px) {
+    .hero-title { font-size: 1.45rem; }
+    .cares-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .care-card { padding: 16px 10px; }
+    .care-num { font-size: 1.4rem; }
+    .care-title { font-size: 0.72rem; }
+    .care-text { font-size: 0.65rem; }
+    .hero-numbers { flex-direction: column; gap: 12px; }
+  }
 </style>
 </head>
 <body>
@@ -973,7 +1044,20 @@
     <a href="#access">アクセス</a>
     <a href="#cta" class="header-cta">無料体験予約</a>
   </nav>
+  <button class="hamburger" id="hamburger" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
 </header>
+
+<!-- モバイルメニュー -->
+<nav class="mobile-nav" id="mobileNav">
+  <a href="#feature" class="mobile-link">施術の特徴</a>
+  <a href="#voice" class="mobile-link">お客様の声</a>
+  <a href="#menu" class="mobile-link">料金</a>
+  <a href="#doctor" class="mobile-link">院長</a>
+  <a href="#access" class="mobile-link">アクセス</a>
+  <a href="#cta" class="mobile-cta mobile-link">無料体験予約（初回¥4,980）</a>
+</nav>
 
 <!-- HERO -->
 <section class="hero">
@@ -1144,48 +1228,20 @@
     </div>
     <div class="results-grid">
       <div class="result-card">
-        <img
-          src="https://raw.githubusercontent.com/jitianbeiren-prog/shinq/main/images/aquarei1.jpg"
-          alt="ビフォーアフター 症例1"
-          class="result-img"
-        >
-        <div class="result-caption">
-          <div class="result-caption-dot"></div>
-          <span class="result-caption-text">症例① — 施術前後の変化</span>
-        </div>
+        <img src="https://raw.githubusercontent.com/jitianbeiren-prog/shinq/main/images/aquarei1.jpg" alt="ビフォーアフター 症例1" class="result-img">
+        <div class="result-caption"><div class="result-caption-dot"></div><span class="result-caption-text">症例① — 施術前後の変化</span></div>
       </div>
       <div class="result-card">
-        <img
-          src="https://raw.githubusercontent.com/jitianbeiren-prog/shinq/main/images/aquarei2.jpg"
-          alt="ビフォーアフター 症例2"
-          class="result-img"
-        >
-        <div class="result-caption">
-          <div class="result-caption-dot"></div>
-          <span class="result-caption-text">症例② — 施術前後の変化</span>
-        </div>
+        <img src="https://raw.githubusercontent.com/jitianbeiren-prog/shinq/main/images/aquarei2.jpg" alt="ビフォーアフター 症例2" class="result-img">
+        <div class="result-caption"><div class="result-caption-dot"></div><span class="result-caption-text">症例② — 施術前後の変化</span></div>
       </div>
       <div class="result-card">
-        <img
-          src="https://raw.githubusercontent.com/jitianbeiren-prog/shinq/main/images/aquarei3.jpg"
-          alt="ビフォーアフター 症例3"
-          class="result-img"
-        >
-        <div class="result-caption">
-          <div class="result-caption-dot"></div>
-          <span class="result-caption-text">症例③ — 施術前後の変化</span>
-        </div>
+        <img src="https://raw.githubusercontent.com/jitianbeiren-prog/shinq/main/images/aquarei3.jpg" alt="ビフォーアフター 症例3" class="result-img">
+        <div class="result-caption"><div class="result-caption-dot"></div><span class="result-caption-text">症例③ — 施術前後の変化</span></div>
       </div>
       <div class="result-card">
-        <img
-          src="https://raw.githubusercontent.com/jitianbeiren-prog/shinq/main/images/aquarei4.jpg"
-          alt="ビフォーアフター 症例4"
-          class="result-img"
-        >
-        <div class="result-caption">
-          <div class="result-caption-dot"></div>
-          <span class="result-caption-text">症例④ — 施術前後の変化</span>
-        </div>
+        <img src="https://raw.githubusercontent.com/jitianbeiren-prog/shinq/main/images/aquarei4.jpg" alt="ビフォーアフター 症例4" class="result-img">
+        <div class="result-caption"><div class="result-caption-dot"></div><span class="result-caption-text">症例④ — 施術前後の変化</span></div>
       </div>
     </div>
   </div>
@@ -1208,10 +1264,7 @@
         <p class="voice-text">50代の頃から分け目が気になり悩んでいました。薬に抵抗があり迷っていたところ紹介いただき来院。先生がとても話しやすく、施術も丁寧に説明してくださり安心できました。想像より痛くなく、施術後はぐっすり眠れました。月2回通うことで長年の悩みが解消できると実感しています。</p>
         <div class="voice-author">
           <div class="voice-avatar">は</div>
-          <div>
-            <div class="voice-name">はるちゃん 様</div>
-            <div class="voice-meta">女性・60代 ／ 2026.03.07</div>
-          </div>
+          <div><div class="voice-name">はるちゃん 様</div><div class="voice-meta">女性・60代 ／ 2026.03.07</div></div>
         </div>
       </div>
       <div class="voice-card">
@@ -1220,10 +1273,7 @@
         <p class="voice-text">昨年夏から抜け毛が酷く悩んでいました。冷え性やPMSもあり東洋医学に興味があって探していたところ、こちらを見つけました。緊張しましたが優しい先生で安心できました。日頃の生活習慣についても丁寧に教えていただき、これを機に自分の体に向き合いたいと思います。</p>
         <div class="voice-author">
           <div class="voice-avatar">マ</div>
-          <div>
-            <div class="voice-name">マリー 様</div>
-            <div class="voice-meta">女性・20代 ／ 2026.03.14</div>
-          </div>
+          <div><div class="voice-name">マリー 様</div><div class="voice-meta">女性・20代 ／ 2026.03.14</div></div>
         </div>
       </div>
       <div class="voice-card">
@@ -1232,10 +1282,7 @@
         <p class="voice-text">「5日で発毛」体験ができると知人に聞いて受けてみたら、本当にピンピンと生えてきたので驚きました！1回受けただけでも効果がわかりました。脱毛からの年月が短いほど効果も早いと聞いたので息子にも教えてあげたいです。</p>
         <div class="voice-author">
           <div class="voice-avatar">ま</div>
-          <div>
-            <div class="voice-name">まきちゃん 様</div>
-            <div class="voice-meta">女性・70代以上 ／ 2026.03.11</div>
-          </div>
+          <div><div class="voice-name">まきちゃん 様</div><div class="voice-meta">女性・70代以上 ／ 2026.03.11</div></div>
         </div>
       </div>
     </div>
@@ -1351,7 +1398,7 @@
     </div>
     <div>
       <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3282.5!2d135.5600534!3d34.4929307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000d6f898d2d649%3A0x913fbec228de65e1!2z44Ki44Kv44Ki6Y284biw5pW06qqo6Zmi!5e0!3m2!1sja!2sjp!4v1712400000000"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3282.5!2d135.5600534!3d34.4929307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000d6f898d2d649%3A0x913fbec228de65e1!2z44Ki44Kv44Ka6Y284biw5pW06qqo6Zmi!5e0!3m2!1sja!2sjp!4v1712400000000"
         width="100%"
         height="320"
         style="border:1px solid rgba(201,168,76,0.2);display:block;filter:grayscale(20%);"
@@ -1392,5 +1439,26 @@
   <div class="footer-logo">アクア鍼灸整骨院</div>
   <div class="footer-copy">© 2026 Aqua Acupuncture Clinic. All Rights Reserved.</div>
 </footer>
+
+<script>
+  // ハンバーガーメニュー
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileNav.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  // モバイルメニューのリンクをタップしたら閉じる
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileNav.classList.remove('open');
+      hamburger.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+</script>
 </body>
 </html>
