@@ -23,12 +23,13 @@
     --header-h: 64px;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
   body {
     font-family: 'Noto Serif JP', serif;
     background: var(--cream);
     color: var(--text);
     overflow-x: hidden;
+    width: 100%;
   }
   img { max-width: 100%; display: block; }
   .gold-line {
@@ -920,8 +921,7 @@
     /* ヒーロー */
     .hero { grid-template-columns: 1fr; min-height: auto; }
     .hero-left { padding: 48px 24px 56px; }
-    .hero-right { min-height: 260px; }
-    .hero-overlay { background: linear-gradient(to bottom, var(--dark) 0%, transparent 40%); }
+    .hero-right { display: none; }
     .hero-numbers { flex-wrap: wrap; gap: 20px 32px; }
 
     /* セクション共通 */
@@ -929,10 +929,12 @@
     .concern::before { left: 24px; font-size: 4rem; }
 
     /* コンサーン */
+    .concern::before { display: none; }
     .concern-grid { grid-template-columns: repeat(2, 1fr); }
 
     /* フィーチャー */
-    .feature::after { font-size: 5rem; }
+    .feature::after { display: none; }
+    .results::before { display: none; }
     .feature-main { grid-template-columns: 1fr; gap: 40px; }
     .feature-img-accent { right: -12px; bottom: -12px; }
     .cares-grid { grid-template-columns: repeat(3, 1fr); }
