@@ -5,48 +5,59 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>アクア鍼灸整骨院 | 薬なしで発毛・育毛 最短5日で実感</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&family=Shippori+Mincho:wght@400;600;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700;800&family=Shippori+Mincho:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --gold: #c9a84c;
-    --gold-light: #e8c97a;
-    --gold-pale: #f5e6bc;
-    --dark: #0e0d0b;
-    --dark2: #1a1814;
-    --dark3: #242218;
-    --mid: #3a3728;
-    --cream: #f7f3ea;
-    --cream2: #ede8da;
-    --text: #2a2620;
-    --text-light: #7a7060;
-    --white: #fdfaf4;
+    --pink: #AC4978;
+    --pink-light: #c96a92;
+    --pink-pale: #f5e0ec;
+    --pink-bg: #fdf5f9;
+    --white: #ffffff;
+    --off-white: #fafafa;
+    --gray-bg: #f7f7f7;
+    --text: #6B6464;
+    --text-dark: #3a3232;
+    --text-light: #9e9494;
+    --border: #e8e0e4;
     --header-h: 64px;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; overflow-x: hidden; }
   body {
     font-family: 'Noto Serif JP', serif;
-    background: var(--cream);
+    background: var(--white);
     color: var(--text);
     overflow-x: hidden;
     width: 100%;
   }
   img { max-width: 100%; display: block; }
-  .gold-line {
-    display: inline-block;
-    width: 40px;
-    height: 1px;
-    background: var(--gold);
-    vertical-align: middle;
-    margin: 0 12px;
-  }
+
   .section-label {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Noto Serif JP', serif;
     font-style: italic;
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
-    color: var(--gold);
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    color: var(--pink);
     text-transform: uppercase;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 56px;
+  }
+  .section-header-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, rgba(172,73,120,0.3), transparent);
+    min-width: 20px;
+  }
+  .section-title-jp {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(1.1rem, 2vw, 1.55rem);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--text-dark);
   }
 
   /* ===== HEADER ===== */
@@ -59,44 +70,43 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: rgba(14, 13, 11, 0.96);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+    background: var(--pink);
+    border-bottom: 1px solid rgba(255,255,255,0.15);
   }
   .logo {
     font-family: 'Shippori Mincho', serif;
     font-size: 1rem;
     font-weight: 600;
-    color: var(--gold-light);
+    color: #fff;
     letter-spacing: 0.12em;
   }
   .logo small {
     display: block;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Noto Serif JP', serif;
     font-style: italic;
-    font-size: 0.7rem;
-    color: var(--gold);
-    letter-spacing: 0.2em;
+    font-size: 0.68rem;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 0.18em;
     font-weight: 300;
   }
-  nav { display: flex; gap: 28px; align-items: center; }
+  nav { display: flex; gap: 26px; align-items: center; }
   nav a {
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    color: rgba(245,230,188,0.7);
+    font-size: 0.73rem;
+    letter-spacing: 0.14em;
+    color: rgba(255,255,255,0.85);
     text-decoration: none;
     transition: color 0.3s;
     white-space: nowrap;
   }
-  nav a:hover { color: var(--gold-light); }
+  nav a:hover { color: #fff; }
   .header-cta {
-    background: var(--gold) !important;
-    color: var(--dark) !important;
+    background: #fff !important;
+    color: var(--pink) !important;
     padding: 8px 20px !important;
-    font-weight: 600 !important;
-    transition: background 0.3s !important;
+    font-weight: 700 !important;
+    border-radius: 2px;
   }
-  .header-cta:hover { background: var(--gold-light) !important; color: var(--dark) !important; }
+  .header-cta:hover { background: var(--pink-pale) !important; }
 
   /* ハンバーガー */
   .hamburger {
@@ -104,19 +114,16 @@
     flex-direction: column;
     justify-content: center;
     gap: 5px;
-    width: 36px;
-    height: 36px;
+    width: 36px; height: 36px;
     cursor: pointer;
-    padding: 4px;
     background: none;
     border: none;
-    z-index: 300;
+    padding: 4px;
   }
   .hamburger span {
     display: block;
-    width: 100%;
-    height: 1.5px;
-    background: var(--gold-light);
+    width: 100%; height: 1.5px;
+    background: #fff;
     transition: all 0.3s;
     transform-origin: center;
   }
@@ -128,16 +135,14 @@
   .mobile-nav {
     display: none;
     position: fixed;
-    top: var(--header-h);
-    left: 0; right: 0;
-    background: rgba(14,13,11,0.98);
-    border-top: 1px solid rgba(201,168,76,0.15);
+    top: var(--header-h); left: 0; right: 0;
+    background: var(--pink);
+    border-top: 1px solid rgba(255,255,255,0.15);
     flex-direction: column;
-    padding: 24px 28px 32px;
-    gap: 0;
+    padding: 20px 28px 28px;
     z-index: 190;
-    transform: translateY(-10px);
     opacity: 0;
+    transform: translateY(-8px);
     transition: opacity 0.3s, transform 0.3s;
     pointer-events: none;
   }
@@ -148,35 +153,34 @@
     pointer-events: auto;
   }
   .mobile-nav a {
-    font-size: 0.9rem;
-    letter-spacing: 0.15em;
-    color: rgba(245,230,188,0.8);
+    font-size: 0.88rem;
+    letter-spacing: 0.14em;
+    color: rgba(255,255,255,0.88);
     text-decoration: none;
-    padding: 14px 0;
-    border-bottom: 1px solid rgba(201,168,76,0.1);
+    padding: 13px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
     transition: color 0.2s;
   }
-  .mobile-nav a:hover { color: var(--gold-light); }
+  .mobile-nav a:hover { color: #fff; }
   .mobile-nav .mobile-cta {
-    margin-top: 20px;
-    background: var(--gold);
-    color: var(--dark);
+    margin-top: 18px;
+    background: #fff;
+    color: var(--pink);
     text-align: center;
-    padding: 16px;
+    padding: 15px;
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     border-bottom: none;
   }
 
   /* ===== HERO ===== */
   .hero {
     min-height: 100vh;
-    background: var(--dark);
+    background: var(--white);
     display: grid;
     grid-template-columns: 1fr 1fr;
-    position: relative;
-    overflow: hidden;
     padding-top: var(--header-h);
+    overflow: hidden;
   }
   .hero-left {
     display: flex;
@@ -190,55 +194,53 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(201, 168, 76, 0.12);
-    border: 1px solid rgba(201, 168, 76, 0.3);
+    background: var(--pink-bg);
+    border: 1px solid rgba(172,73,120,0.25);
     padding: 6px 14px;
-    margin-bottom: 36px;
+    margin-bottom: 32px;
     width: fit-content;
   }
   .hero-badge span {
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    color: var(--gold-light);
-    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    color: var(--pink);
     font-style: italic;
   }
   .hero-catch {
-    font-family: 'Shippori Mincho', serif;
-    font-size: clamp(0.85rem, 1.3vw, 1.1rem);
-    font-weight: 400;
-    color: var(--gold);
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(0.82rem, 1.2vw, 1rem);
+    color: var(--pink);
     letter-spacing: 0.2em;
-    margin-bottom: 20px;
-    line-height: 1.8;
+    margin-bottom: 18px;
+    line-height: 1.9;
   }
   .hero-title {
     font-family: 'Shippori Mincho', serif;
     font-size: clamp(1.8rem, 3.5vw, 3rem);
     font-weight: 800;
-    color: var(--white);
-    line-height: 1.4;
+    color: var(--text-dark);
+    line-height: 1.42;
     letter-spacing: 0.05em;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
   }
   .hero-title em {
     font-style: normal;
-    color: var(--gold-light);
+    color: var(--pink);
     display: block;
   }
   .hero-sub {
-    font-size: 0.85rem;
-    color: rgba(253, 250, 244, 0.55);
-    letter-spacing: 0.12em;
-    line-height: 2;
-    margin-bottom: 48px;
-    border-left: 2px solid var(--gold);
+    font-size: 0.83rem;
+    color: var(--text-light);
+    letter-spacing: 0.1em;
+    line-height: 2.1;
+    margin-bottom: 44px;
+    border-left: 2px solid var(--pink);
     padding-left: 16px;
   }
-  .hero-cta-wrap { display: flex; gap: 16px; flex-direction: column; max-width: 300px; }
+  .hero-cta-wrap { display: flex; flex-direction: column; gap: 12px; max-width: 300px; }
   .btn-primary {
-    background: var(--gold);
-    color: var(--dark);
+    background: var(--pink);
+    color: #fff;
     padding: 16px 32px;
     font-family: 'Noto Serif JP', serif;
     font-size: 0.85rem;
@@ -261,10 +263,11 @@
     transform: translateX(-100%);
     transition: transform 0.4s;
   }
+  .btn-primary:hover { background: var(--pink-light); }
   .btn-primary:hover::after { transform: translateX(0); }
   .btn-secondary {
-    border: 1px solid rgba(201, 168, 76, 0.5);
-    color: var(--gold-light);
+    border: 1px solid rgba(172,73,120,0.4);
+    color: var(--pink);
     padding: 14px 32px;
     font-size: 0.8rem;
     letter-spacing: 0.15em;
@@ -273,173 +276,76 @@
     display: block;
     transition: all 0.3s;
   }
-  .btn-secondary:hover { background: rgba(201,168,76,0.08); }
+  .btn-secondary:hover { background: var(--pink-bg); }
   .hero-numbers {
     display: flex;
     gap: 32px;
-    margin-top: 48px;
-    padding-top: 32px;
-    border-top: 1px solid rgba(201,168,76,0.15);
+    margin-top: 40px;
+    padding-top: 28px;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
   }
-  .hero-num-item { text-align: left; }
   .hero-num-value {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.2rem;
-    color: var(--gold-light);
+    font-family: 'Noto Serif JP', serif;
+    font-size: 2rem;
+    color: var(--pink);
     line-height: 1;
-    letter-spacing: -0.02em;
+    font-weight: 700;
   }
-  .hero-num-value span { font-size: 1rem; }
-  .hero-num-label {
-    font-size: 0.65rem;
-    color: rgba(253,250,244,0.5);
-    letter-spacing: 0.12em;
-    margin-top: 4px;
-  }
-  .hero-right {
-    position: relative;
-    overflow: hidden;
-    min-height: 400px;
-  }
-  .hero-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
+  .hero-num-value span { font-size: 0.95rem; font-weight: 400; }
+  .hero-num-label { font-size: 0.62rem; color: var(--text-light); letter-spacing: 0.12em; margin-top: 6px; }
+  .hero-right { position: relative; overflow: hidden; min-height: 400px; }
+  .hero-img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to right, var(--dark) 0%, transparent 20%);
+    position: absolute; inset: 0;
+    background: linear-gradient(to right, var(--white) 0%, transparent 18%);
     z-index: 1;
-  }
-  .hero-vertical-text {
-    position: absolute;
-    right: 24px;
-    top: 50%;
-    transform: translateY(-50%) rotate(90deg);
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 0.65rem;
-    letter-spacing: 0.3em;
-    color: rgba(201,168,76,0.4);
-    z-index: 2;
-    white-space: nowrap;
   }
 
   /* ===== CONCERN ===== */
-  .concern {
-    background: var(--dark2);
-    padding: 100px 80px;
-    position: relative;
-  }
-  .concern::before {
-    content: 'CONCERN';
-    position: absolute;
-    top: 40px; left: 80px;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 5rem;
-    font-weight: 300;
-    color: rgba(201,168,76,0.04);
-    letter-spacing: 0.2em;
-    line-height: 1;
-    pointer-events: none;
-  }
+  .concern { background: var(--gray-bg); padding: 96px 80px; }
   .concern-inner { max-width: 1000px; margin: 0 auto; }
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    margin-bottom: 60px;
-  }
-  .section-header-line {
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(to right, rgba(201,168,76,0.5), transparent);
-    min-width: 40px;
-  }
-  .section-title-jp {
-    font-family: 'Shippori Mincho', serif;
-    font-size: clamp(1.1rem, 2vw, 1.6rem);
-    font-weight: 600;
-    color: var(--white);
-    letter-spacing: 0.1em;
-  }
   .concern-lead {
-    font-size: 0.95rem;
-    color: rgba(253,250,244,0.6);
-    line-height: 2.4;
-    letter-spacing: 0.08em;
-    margin-bottom: 60px;
+    font-size: 0.92rem;
+    color: var(--text);
+    line-height: 2.5;
+    letter-spacing: 0.07em;
+    margin-bottom: 52px;
     max-width: 600px;
   }
-  .concern-lead strong { color: var(--gold-light); font-weight: 600; }
-  .concern-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-  }
+  .concern-lead strong { color: var(--pink); font-weight: 600; }
+  .concern-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
   .concern-item {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(201,168,76,0.1);
-    padding: 28px 24px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    padding: 26px 22px;
     display: flex;
     align-items: flex-start;
-    gap: 14px;
+    gap: 12px;
     transition: all 0.3s;
   }
-  .concern-item:hover {
-    background: rgba(201,168,76,0.06);
-    border-color: rgba(201,168,76,0.3);
-  }
+  .concern-item:hover { border-color: rgba(172,73,120,0.3); background: var(--pink-bg); }
   .concern-check {
-    width: 20px;
-    height: 20px;
-    background: rgba(201,168,76,0.15);
-    border: 1px solid var(--gold);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    margin-top: 2px;
+    width: 20px; height: 20px;
+    background: var(--pink-bg);
+    border: 1px solid var(--pink);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 2px;
   }
-  .concern-check::after { content: '✓'; color: var(--gold); font-size: 0.7rem; }
-  .concern-text {
-    font-size: 0.82rem;
-    color: rgba(253,250,244,0.75);
-    letter-spacing: 0.08em;
-    line-height: 1.7;
-  }
+  .concern-check::after { content: '✓'; color: var(--pink); font-size: 0.68rem; }
+  .concern-text { font-size: 0.82rem; color: var(--text); letter-spacing: 0.06em; line-height: 1.75; }
 
   /* ===== FEATURE ===== */
-  .feature {
-    background: var(--cream);
-    padding: 100px 80px;
-    position: relative;
-    overflow: hidden;
-  }
-  .feature::after {
-    content: 'TREATMENT';
-    position: absolute;
-    bottom: -20px; right: -20px;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 8rem;
-    font-weight: 300;
-    color: rgba(201,168,76,0.05);
-    letter-spacing: 0.1em;
-    line-height: 1;
-    pointer-events: none;
-  }
+  .feature { background: var(--white); padding: 96px 80px; }
   .feature-inner { max-width: 1100px; margin: 0 auto; }
-  .feature-header { margin-bottom: 80px; }
-  .feature-header .section-label { margin-bottom: 12px; display: block; }
-  .feature-header .section-title-jp { color: var(--text); font-size: clamp(1.2rem, 2.2vw, 1.8rem); }
+  .feature-header { margin-bottom: 72px; }
+  .feature-header .section-label { margin-bottom: 10px; display: block; }
   .feature-main {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 60px;
     align-items: center;
-    margin-bottom: 80px;
+    margin-bottom: 72px;
   }
   .feature-img-wrap { position: relative; }
   .feature-img-main { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
@@ -448,66 +354,68 @@
     width: 45%;
     aspect-ratio: 1;
     bottom: -24px; right: -24px;
-    border: 4px solid var(--cream);
+    border: 4px solid var(--white);
     object-fit: cover;
     display: block;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.1);
   }
   .feature-tag {
     display: inline-block;
-    background: var(--gold);
-    color: var(--dark);
-    font-size: 0.65rem;
+    background: var(--pink);
+    color: #fff;
+    font-size: 0.62rem;
     letter-spacing: 0.2em;
     padding: 4px 10px;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
     font-weight: 600;
   }
   .feature-title {
     font-family: 'Shippori Mincho', serif;
-    font-size: clamp(1rem, 1.8vw, 1.4rem);
+    font-size: clamp(1rem, 1.8vw, 1.35rem);
     font-weight: 600;
-    color: var(--text);
-    line-height: 1.6;
+    color: var(--text-dark);
+    line-height: 1.65;
     letter-spacing: 0.05em;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
   }
   .feature-text {
-    font-size: 0.83rem;
+    font-size: 0.82rem;
     line-height: 2.2;
-    color: var(--text-light);
-    letter-spacing: 0.05em;
-    margin-bottom: 28px;
+    color: var(--text);
+    letter-spacing: 0.04em;
+    margin-bottom: 26px;
   }
   .feature-point {
-    background: var(--dark);
-    padding: 20px 24px;
+    background: var(--pink-bg);
+    border-left: 3px solid var(--pink);
+    padding: 18px 22px;
     display: flex;
     align-items: center;
     gap: 16px;
   }
   .feature-point-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2rem;
-    color: var(--gold);
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.8rem;
+    color: var(--pink);
     line-height: 1;
     flex-shrink: 0;
+    font-weight: 700;
   }
   .feature-point-text {
     font-size: 0.8rem;
-    color: rgba(253,250,244,0.8);
-    letter-spacing: 0.08em;
-    line-height: 1.7;
+    color: var(--text);
+    letter-spacing: 0.07em;
+    line-height: 1.75;
   }
-  .feature-point-text strong { color: var(--gold-light); }
+  .feature-point-text strong { color: var(--pink); font-weight: 700; }
   .cares-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 16px;
-    margin-top: 20px;
+    grid-template-columns: repeat(5,1fr);
+    gap: 14px;
   }
   .care-card {
-    border: 1px solid rgba(201,168,76,0.25);
-    padding: 24px 16px;
+    border: 1px solid var(--border);
+    padding: 22px 14px;
     text-align: center;
     background: var(--white);
     transition: all 0.3s;
@@ -519,135 +427,100 @@
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 3px;
-    background: var(--gold);
+    background: var(--pink);
     transform: scaleX(0);
     transition: transform 0.3s;
   }
-  .care-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+  .care-card:hover { transform: translateY(-4px); box-shadow: 0 10px 32px rgba(172,73,120,0.1); border-color: rgba(172,73,120,0.25); }
   .care-card:hover::before { transform: scaleX(1); }
   .care-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.8rem;
-    color: var(--gold);
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.5rem;
+    color: var(--pink);
     line-height: 1;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
+    font-weight: 700;
   }
-  .care-title {
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--text);
-    letter-spacing: 0.08em;
-    line-height: 1.5;
-    margin-bottom: 8px;
-  }
-  .care-text { font-size: 0.7rem; color: var(--text-light); line-height: 1.7; letter-spacing: 0.04em; }
+  .care-title { font-size: 0.78rem; font-weight: 600; color: var(--text-dark); letter-spacing: 0.07em; line-height: 1.55; margin-bottom: 8px; }
+  .care-text { font-size: 0.68rem; color: var(--text-light); line-height: 1.75; letter-spacing: 0.03em; }
 
   /* ===== RESULTS ===== */
-  .results {
-    background: var(--dark2);
-    padding: 100px 80px;
-    position: relative;
-    overflow: hidden;
-  }
-  .results::before {
-    content: 'RESULTS';
-    position: absolute;
-    top: 40px; right: -10px;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 5rem;
-    font-weight: 300;
-    color: rgba(201,168,76,0.04);
-    letter-spacing: 0.2em;
-    pointer-events: none;
-  }
+  .results { background: var(--gray-bg); padding: 96px 80px; }
   .results-inner { max-width: 1100px; margin: 0 auto; }
-  .results-header { margin-bottom: 60px; }
-  .results-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .results-header { margin-bottom: 56px; }
+  .results-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; }
   .result-card {
-    border: 1px solid rgba(201,168,76,0.15);
+    border: 1px solid var(--border);
     overflow: hidden;
-    background: rgba(255,255,255,0.03);
+    background: var(--white);
     transition: all 0.3s;
   }
-  .result-card:hover {
-    border-color: rgba(201,168,76,0.4);
-    transform: translateY(-4px);
-    box-shadow: 0 16px 48px rgba(0,0,0,0.3);
-  }
+  .result-card:hover { border-color: rgba(172,73,120,0.3); transform: translateY(-3px); box-shadow: 0 10px 32px rgba(0,0,0,0.07); }
   .result-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; }
   .result-caption {
-    padding: 16px 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    padding: 14px 18px;
+    display: flex; align-items: center; gap: 10px;
   }
-  .result-caption-dot { width: 6px; height: 6px; background: var(--gold); flex-shrink: 0; }
-  .result-caption-text { font-size: 0.75rem; color: rgba(253,250,244,0.6); letter-spacing: 0.1em; }
+  .result-caption-dot { width: 5px; height: 5px; background: var(--pink); flex-shrink: 0; border-radius: 50%; }
+  .result-caption-text { font-size: 0.73rem; color: var(--text-light); letter-spacing: 0.09em; }
 
   /* ===== VOICE ===== */
-  .voice { background: var(--dark3); padding: 100px 80px; position: relative; }
+  .voice { background: var(--white); padding: 96px 80px; }
   .voice-inner { max-width: 1000px; margin: 0 auto; }
-  .voice-header { margin-bottom: 60px; }
-  .voice-header .section-title-jp { color: var(--white); }
-  .voice-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .voice-header { margin-bottom: 56px; }
+  .voice-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
   .voice-card {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(201,168,76,0.12);
-    padding: 32px 28px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--pink);
+    padding: 28px 24px;
     position: relative;
+    transition: all 0.3s;
   }
-  .voice-stars { display: flex; gap: 3px; margin-bottom: 16px; }
-  .voice-stars span { color: var(--gold); font-size: 0.9rem; }
-  .voice-text {
-    font-size: 0.8rem;
-    line-height: 2;
-    color: rgba(253,250,244,0.7);
-    letter-spacing: 0.05em;
-    margin-bottom: 24px;
-  }
-  .voice-author {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(201,168,76,0.1);
-  }
-  .voice-avatar {
-    width: 36px; height: 36px;
-    background: rgba(201,168,76,0.15);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.7rem;
-    color: var(--gold);
-    flex-shrink: 0;
-  }
-  .voice-name { font-size: 0.75rem; color: var(--gold-light); letter-spacing: 0.1em; }
-  .voice-meta { font-size: 0.65rem; color: rgba(253,250,244,0.4); margin-top: 2px; }
+  .voice-card:hover { box-shadow: 0 8px 28px rgba(172,73,120,0.08); transform: translateY(-2px); }
   .voice-quote {
     position: absolute;
-    top: 20px; right: 24px;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 3rem;
-    color: rgba(201,168,76,0.12);
+    top: 16px; right: 20px;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 2.5rem;
+    color: rgba(172,73,120,0.1);
     line-height: 1;
   }
+  .voice-stars { display: flex; gap: 3px; margin-bottom: 14px; }
+  .voice-stars span { color: var(--pink); font-size: 0.85rem; }
+  .voice-text { font-size: 0.78rem; line-height: 2.05; color: var(--text); letter-spacing: 0.04em; margin-bottom: 22px; }
+  .voice-author {
+    display: flex; align-items: center; gap: 11px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+  .voice-avatar {
+    width: 34px; height: 34px;
+    background: var(--pink-bg);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.68rem;
+    color: var(--pink);
+    flex-shrink: 0;
+    border: 1px solid rgba(172,73,120,0.2);
+  }
+  .voice-name { font-size: 0.73rem; color: var(--text-dark); letter-spacing: 0.1em; font-weight: 600; }
+  .voice-meta { font-size: 0.62rem; color: var(--text-light); margin-top: 2px; }
 
   /* ===== MENU ===== */
-  .menu { background: var(--cream2); padding: 100px 80px; }
+  .menu { background: var(--gray-bg); padding: 96px 80px; }
   .menu-inner { max-width: 900px; margin: 0 auto; }
-  .menu-header { margin-bottom: 60px; }
-  .menu-header .section-label { margin-bottom: 12px; display: block; }
-  .menu-cards { display: grid; gap: 24px; }
+  .menu-header { margin-bottom: 56px; }
+  .menu-header .section-label { margin-bottom: 10px; display: block; }
+  .menu-cards { display: grid; gap: 18px; }
   .menu-card {
     background: var(--white);
-    border: 1px solid rgba(201,168,76,0.2);
+    border: 1px solid var(--border);
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: center;
-    gap: 32px;
-    padding: 32px 36px;
+    gap: 28px;
+    padding: 28px 32px;
     transition: all 0.3s;
     position: relative;
     overflow: hidden;
@@ -657,53 +530,52 @@
     position: absolute;
     left: 0; top: 0; bottom: 0;
     width: 4px;
-    background: var(--gold);
+    background: var(--pink);
     transform: scaleY(0);
     transform-origin: bottom;
     transition: transform 0.3s;
   }
-  .menu-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.06); }
+  .menu-card:hover { box-shadow: 0 6px 24px rgba(172,73,120,0.08); }
   .menu-card:hover::after { transform: scaleY(1); }
   .menu-badge {
-    background: var(--dark);
-    color: var(--gold-light);
-    font-size: 0.6rem;
+    background: var(--text-dark);
+    color: #fff;
+    font-size: 0.58rem;
     letter-spacing: 0.15em;
     padding: 4px 10px;
     white-space: nowrap;
     font-weight: 600;
     align-self: start;
   }
-  .menu-badge.new { background: var(--gold); color: var(--dark); }
+  .menu-badge.new { background: var(--pink); color: #fff; }
   .menu-name {
     font-family: 'Shippori Mincho', serif;
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     font-weight: 600;
-    color: var(--text);
-    letter-spacing: 0.08em;
-    line-height: 1.5;
+    color: var(--text-dark);
+    letter-spacing: 0.07em;
+    line-height: 1.55;
     margin-bottom: 6px;
   }
-  .menu-desc { font-size: 0.72rem; color: var(--text-light); letter-spacing: 0.06em; line-height: 1.7; }
+  .menu-desc { font-size: 0.7rem; color: var(--text-light); letter-spacing: 0.05em; line-height: 1.75; }
   .menu-price-wrap { text-align: right; flex-shrink: 0; }
   .menu-price {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.8rem;
-    color: var(--gold);
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.7rem;
+    color: var(--pink);
     line-height: 1;
-    letter-spacing: -0.01em;
+    font-weight: 700;
   }
-  .menu-price small { font-size: 0.9rem; color: var(--text-light); font-family: 'Noto Serif JP', serif; }
-  .menu-time { font-size: 0.7rem; color: var(--text-light); margin-top: 4px; letter-spacing: 0.08em; }
+  .menu-price small { font-size: 0.85rem; color: var(--text-light); font-weight: 400; }
+  .menu-time { font-size: 0.68rem; color: var(--text-light); margin-top: 5px; letter-spacing: 0.08em; }
 
   /* ===== DOCTOR ===== */
-  .doctor { background: var(--dark); padding: 100px 80px; position: relative; overflow: hidden; }
+  .doctor { background: var(--pink); padding: 96px 80px; }
   .doctor-inner {
-    max-width: 1000px;
-    margin: 0 auto;
+    max-width: 1000px; margin: 0 auto;
     display: grid;
-    grid-template-columns: 340px 1fr;
-    gap: 80px;
+    grid-template-columns: 320px 1fr;
+    gap: 72px;
     align-items: center;
   }
   .doctor-img-wrap { position: relative; }
@@ -711,194 +583,162 @@
   .doctor-img-label {
     position: absolute;
     bottom: -1px; left: 0; right: 0;
-    background: var(--gold);
-    color: var(--dark);
+    background: rgba(255,255,255,0.15);
+    color: #fff;
     padding: 10px 20px;
-    font-size: 0.75rem;
+    font-size: 0.73rem;
     font-weight: 600;
     letter-spacing: 0.12em;
     text-align: center;
+    backdrop-filter: blur(4px);
   }
-  .doctor-content .section-label { margin-bottom: 12px; display: block; }
+  .doctor-content .section-label { color: rgba(255,255,255,0.7); margin-bottom: 12px; display: block; }
   .doctor-name {
     font-family: 'Shippori Mincho', serif;
-    font-size: 1.8rem;
+    font-size: 1.75rem;
     font-weight: 800;
-    color: var(--white);
+    color: #fff;
     letter-spacing: 0.1em;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
-  .doctor-name-kana { font-size: 0.7rem; color: var(--gold); letter-spacing: 0.2em; margin-bottom: 32px; }
+  .doctor-name-kana { font-size: 0.68rem; color: rgba(255,255,255,0.65); letter-spacing: 0.2em; margin-bottom: 28px; }
   .doctor-message {
-    font-size: 0.83rem;
+    font-size: 0.82rem;
     line-height: 2.4;
-    color: rgba(253,250,244,0.7);
-    letter-spacing: 0.06em;
-    margin-bottom: 36px;
-    border-left: 2px solid rgba(201,168,76,0.3);
-    padding-left: 20px;
+    color: rgba(255,255,255,0.82);
+    letter-spacing: 0.05em;
+    margin-bottom: 32px;
+    border-left: 2px solid rgba(255,255,255,0.3);
+    padding-left: 18px;
   }
   .licenses { display: flex; flex-direction: column; gap: 8px; }
   .license-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 0.72rem;
-    color: rgba(253,250,244,0.6);
+    display: flex; align-items: center; gap: 10px;
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.65);
     letter-spacing: 0.08em;
   }
-  .license-dot { width: 4px; height: 4px; background: var(--gold); flex-shrink: 0; }
+  .license-dot { width: 4px; height: 4px; background: rgba(255,255,255,0.6); border-radius: 50%; flex-shrink: 0; }
 
   /* ===== ACCESS ===== */
-  .access { background: var(--cream); padding: 100px 80px; }
+  .access { background: var(--white); padding: 96px 80px; }
   .access-inner {
-    max-width: 1000px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: start;
+    max-width: 1000px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 60px; align-items: start;
   }
-  .access-header { margin-bottom: 40px; }
-  .access-header .section-label { margin-bottom: 12px; display: block; }
-  .access-info { display: flex; flex-direction: column; gap: 20px; }
+  .access-header { margin-bottom: 36px; }
+  .access-header .section-label { margin-bottom: 10px; display: block; }
+  .access-info { display: flex; flex-direction: column; gap: 16px; }
   .access-row {
-    display: flex;
-    gap: 16px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid rgba(201,168,76,0.15);
+    display: flex; gap: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
   }
   .access-key {
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
-    color: var(--gold);
-    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    color: var(--pink);
     font-style: italic;
-    width: 80px;
-    flex-shrink: 0;
+    width: 80px; flex-shrink: 0;
     padding-top: 2px;
   }
-  .access-val { font-size: 0.82rem; color: var(--text); letter-spacing: 0.06em; line-height: 1.8; }
+  .access-val { font-size: 0.8rem; color: var(--text); letter-spacing: 0.05em; line-height: 1.85; }
   .hours-grid {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 6px 16px;
-    font-size: 0.78rem;
-    color: var(--text);
-    letter-spacing: 0.06em;
+    display: grid; grid-template-columns: auto 1fr;
+    gap: 5px 14px;
+    font-size: 0.78rem; color: var(--text);
   }
   .hours-grid .day { color: var(--text-light); }
-  .hours-grid .time { font-weight: 600; }
+  .hours-grid .time { font-weight: 600; color: var(--text-dark); }
 
   /* ===== CTA ===== */
   .cta-section {
-    background: var(--dark);
-    padding: 100px 80px;
+    background: var(--pink-bg);
+    border-top: 1px solid rgba(172,73,120,0.15);
+    padding: 96px 80px;
     text-align: center;
-    position: relative;
-    overflow: hidden;
   }
-  .cta-section::before {
-    content: '';
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .cta-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+  .cta-inner { max-width: 580px; margin: 0 auto; }
   .cta-label {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Noto Serif JP', serif;
     font-style: italic;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     letter-spacing: 0.25em;
-    color: var(--gold);
-    display: block;
-    margin-bottom: 20px;
+    color: var(--pink);
+    display: block; margin-bottom: 18px;
   }
   .cta-title {
     font-family: 'Shippori Mincho', serif;
-    font-size: clamp(1.4rem, 3vw, 2.2rem);
+    font-size: clamp(1.4rem, 3vw, 2.1rem);
     font-weight: 800;
-    color: var(--white);
+    color: var(--text-dark);
     letter-spacing: 0.08em;
-    line-height: 1.5;
+    line-height: 1.55;
     margin-bottom: 16px;
   }
   .cta-sub {
-    font-size: 0.82rem;
-    color: rgba(253,250,244,0.5);
-    letter-spacing: 0.1em;
-    line-height: 1.9;
-    margin-bottom: 48px;
+    font-size: 0.8rem;
+    color: var(--text-light);
+    letter-spacing: 0.09em;
+    line-height: 2;
+    margin-bottom: 44px;
   }
   .cta-price-box {
     display: inline-block;
-    border: 1px solid rgba(201,168,76,0.3);
-    padding: 20px 48px;
-    margin-bottom: 32px;
+    border: 1px solid rgba(172,73,120,0.3);
+    background: var(--white);
+    padding: 22px 52px;
+    margin-bottom: 30px;
   }
-  .cta-price-label { font-size: 0.65rem; letter-spacing: 0.2em; color: var(--gold); display: block; margin-bottom: 8px; }
+  .cta-price-label { font-size: 0.62rem; letter-spacing: 0.2em; color: var(--pink); display: block; margin-bottom: 10px; }
   .cta-price {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 3rem;
-    color: var(--gold-light);
+    font-family: 'Noto Serif JP', serif;
+    font-size: 2.8rem;
+    color: var(--pink);
     line-height: 1;
+    font-weight: 700;
   }
-  .cta-price small { font-size: 1rem; color: rgba(253,250,244,0.5); font-family: 'Noto Serif JP', serif; }
-  .cta-price-sub { font-size: 0.7rem; color: rgba(253,250,244,0.4); margin-top: 6px; letter-spacing: 0.1em; }
+  .cta-price small { font-size: 1rem; color: var(--text-light); font-weight: 400; }
+  .cta-price-sub { font-size: 0.68rem; color: var(--text-light); margin-top: 8px; letter-spacing: 0.1em; }
   .cta-btn { max-width: 360px; margin: 0 auto; }
   .btn-large {
     display: block;
-    background: var(--gold);
-    color: var(--dark);
+    background: var(--pink);
+    color: #fff;
     padding: 20px 48px;
     font-family: 'Noto Serif JP', serif;
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     font-weight: 700;
     letter-spacing: 0.2em;
     text-decoration: none;
     transition: all 0.3s;
     text-align: center;
   }
-  .btn-large:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(201,168,76,0.3); }
+  .btn-large:hover { background: var(--pink-light); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(172,73,120,0.28); }
 
   /* ===== FOOTER ===== */
   footer {
-    background: var(--dark2);
-    padding: 40px 80px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-top: 1px solid rgba(201,168,76,0.1);
+    background: var(--pink);
+    padding: 32px 80px;
+    display: flex; align-items: center; justify-content: space-between;
   }
-  .footer-logo {
-    font-family: 'Shippori Mincho', serif;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--gold-light);
-    letter-spacing: 0.1em;
-  }
-  .footer-copy { font-size: 0.65rem; color: rgba(253,250,244,0.3); letter-spacing: 0.1em; }
+  .footer-logo { font-family: 'Shippori Mincho', serif; font-size: 0.9rem; font-weight: 600; color: #fff; letter-spacing: 0.12em; }
+  .footer-copy { font-size: 0.62rem; color: rgba(255,255,255,0.5); letter-spacing: 0.1em; }
 
   /* ===== ANIMATIONS ===== */
   @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
+    from { opacity: 0; transform: translateY(18px); }
     to { opacity: 1; transform: translateY(0); }
   }
   .hero-badge { animation: fadeUp 0.8s ease forwards; }
-  .hero-catch { animation: fadeUp 0.8s 0.15s ease both; }
-  .hero-title { animation: fadeUp 0.8s 0.25s ease both; }
-  .hero-sub { animation: fadeUp 0.8s 0.35s ease both; }
-  .hero-cta-wrap { animation: fadeUp 0.8s 0.45s ease both; }
-  .hero-numbers { animation: fadeUp 0.8s 0.55s ease both; }
+  .hero-catch { animation: fadeUp 0.8s 0.12s ease both; }
+  .hero-title { animation: fadeUp 0.8s 0.22s ease both; }
+  .hero-sub { animation: fadeUp 0.8s 0.32s ease both; }
+  .hero-cta-wrap { animation: fadeUp 0.8s 0.42s ease both; }
+  .hero-numbers { animation: fadeUp 0.8s 0.52s ease both; }
 
-  /* =====================================================
-     RESPONSIVE BREAKPOINTS
-     ===================================================== */
-
-  /* ── Tablet: 768px〜1024px ── */
+  /* ===== RESPONSIVE ===== */
   @media (max-width: 1024px) {
     header { padding: 0 28px; }
     nav { gap: 18px; }
@@ -906,132 +746,68 @@
     .hero { grid-template-columns: 3fr 2fr; }
     .hero-left { padding: 60px 40px 60px 48px; }
     .concern, .feature, .results, .voice, .menu, .doctor, .access, .cta-section { padding: 80px 48px; }
-    .cares-grid { grid-template-columns: repeat(3, 1fr); }
+    .cares-grid { grid-template-columns: repeat(3,1fr); }
     .feature-main { gap: 40px; }
-    .doctor-inner { grid-template-columns: 280px 1fr; gap: 48px; }
+    .doctor-inner { grid-template-columns: 260px 1fr; gap: 48px; }
   }
-
-  /* ── Small Tablet: 768px〜900px ── */
   @media (max-width: 900px) {
-    /* ヘッダー */
     header { padding: 0 20px; }
     nav { display: none; }
     .hamburger { display: flex; }
-
-    /* ヒーロー */
-    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero { grid-template-columns: 1fr; }
     .hero-left { padding: 48px 24px 56px; }
     .hero-right { display: none; }
-    .hero-numbers { flex-wrap: wrap; gap: 20px 32px; }
-
-    /* セクション共通 */
+    .hero-numbers { flex-wrap: wrap; gap: 20px 28px; }
     .concern, .feature, .results, .voice, .menu, .doctor, .access, .cta-section { padding: 72px 24px; }
-    .concern::before { left: 24px; font-size: 4rem; }
-
-    /* コンサーン */
-    .concern::before { display: none; }
-    .concern-grid { grid-template-columns: repeat(2, 1fr); }
-
-    /* フィーチャー */
-    .feature::after { display: none; }
-    .results::before { display: none; }
+    .concern-grid { grid-template-columns: repeat(2,1fr); }
     .feature-main { grid-template-columns: 1fr; gap: 40px; }
-    .feature-img-accent { right: -12px; bottom: -12px; }
-    .cares-grid { grid-template-columns: repeat(3, 1fr); }
-
-    /* ビフォーアフター */
+    .feature-img-accent { right: -10px; bottom: -10px; }
+    .cares-grid { grid-template-columns: repeat(3,1fr); }
     .results-grid { grid-template-columns: 1fr; }
-
-    /* お客様の声 */
-    .voice-grid { grid-template-columns: 1fr; gap: 16px; }
-
-    /* メニュー */
-    .menu-card {
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
+    .voice-grid { grid-template-columns: 1fr; gap: 14px; }
+    .menu-card { grid-template-columns: 1fr; gap: 14px; }
     .menu-price-wrap { text-align: left; }
-
-    /* ドクター */
-    .doctor-inner { grid-template-columns: 1fr; gap: 40px; }
-    .doctor-img-wrap { max-width: 280px; }
-
-    /* アクセス */
+    .doctor-inner { grid-template-columns: 1fr; gap: 36px; }
+    .doctor-img-wrap { max-width: 260px; }
     .access-inner { grid-template-columns: 1fr; gap: 40px; }
-
-    /* フッター */
-    footer { flex-direction: column; gap: 12px; text-align: center; padding: 28px 24px; }
+    footer { flex-direction: column; gap: 10px; text-align: center; padding: 26px 24px; }
   }
-
-  /* ── Mobile: ~599px ── */
   @media (max-width: 599px) {
     :root { --header-h: 56px; }
-
-    /* ヘッダー */
-    .logo { font-size: 0.88rem; }
+    .logo { font-size: 0.85rem; }
     .logo small { font-size: 0.6rem; }
-
-    /* ヒーロー */
     .hero-left { padding: 40px 20px 48px; }
-    .hero-badge span { font-size: 0.62rem; }
-    .hero-title { font-size: 1.65rem; }
+    .hero-title { font-size: 1.62rem; }
     .hero-sub { font-size: 0.78rem; }
     .hero-cta-wrap { max-width: 100%; }
-    .btn-primary, .btn-secondary { font-size: 0.82rem; padding: 15px 24px; }
-    .hero-numbers { gap: 16px 24px; margin-top: 36px; padding-top: 24px; }
-    .hero-num-value { font-size: 1.8rem; }
-    .hero-right { min-height: 200px; }
-
-    /* コンサーン */
+    .btn-primary, .btn-secondary { font-size: 0.82rem; padding: 14px 22px; }
+    .hero-numbers { gap: 16px 22px; }
     .concern, .feature, .results, .voice, .menu, .doctor, .access, .cta-section { padding: 60px 20px; }
     .concern-grid { grid-template-columns: 1fr; }
-    .concern-lead { font-size: 0.85rem; margin-bottom: 40px; }
-    .concern-item { padding: 20px 18px; }
-
-    /* フィーチャー */
-    .cares-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .care-card { padding: 20px 12px; }
-    .feature-header { margin-bottom: 48px; }
-
-    /* セクションヘッダー */
-    .section-header { gap: 12px; margin-bottom: 40px; }
-    .section-header-line { min-width: 20px; }
-
-    /* ビフォーアフター */
-    .results-grid { gap: 16px; }
-
-    /* メニュー */
-    .menu-card { padding: 24px 20px; }
+    .cares-grid { grid-template-columns: repeat(2,1fr); gap: 10px; }
+    .care-card { padding: 18px 10px; }
+    .section-header { gap: 10px; margin-bottom: 40px; }
+    .section-header-line { min-width: 16px; }
+    .results-grid { gap: 14px; }
+    .menu-card { padding: 22px 18px; }
     .menu-price { font-size: 1.5rem; }
-
-    /* ドクター */
-    .doctor-img-wrap { max-width: 240px; }
-    .doctor-name { font-size: 1.4rem; }
-
-    /* CTA */
-    .cta-price-box { padding: 18px 28px; }
-    .cta-price { font-size: 2.4rem; }
-    .cta-sub { font-size: 0.78rem; }
-    .btn-large { font-size: 0.85rem; padding: 18px 32px; }
-
-    /* アクセス */
-    .access-row { flex-direction: column; gap: 6px; }
+    .doctor-img-wrap { max-width: 220px; }
+    .doctor-name { font-size: 1.45rem; }
+    .cta-price-box { padding: 18px 24px; }
+    .cta-price { font-size: 2.3rem; }
+    .btn-large { font-size: 0.84rem; padding: 18px 28px; }
+    .access-row { flex-direction: column; gap: 5px; }
     .access-key { width: auto; }
   }
-
-  /* ── Tiny Mobile: ~374px ── */
   @media (max-width: 374px) {
-    .hero-title { font-size: 1.45rem; }
-    .cares-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
-    .care-card { padding: 16px 10px; }
-    .care-num { font-size: 1.4rem; }
-    .care-title { font-size: 0.72rem; }
-    .care-text { font-size: 0.65rem; }
+    .hero-title { font-size: 1.42rem; }
     .hero-numbers { flex-direction: column; gap: 12px; }
+    .cares-grid { grid-template-columns: 1fr 1fr; }
   }
 </style>
 </head>
 <body>
+
 <!-- HEADER -->
 <header>
   <div class="logo">
@@ -1051,7 +827,6 @@
   </button>
 </header>
 
-<!-- モバイルメニュー -->
 <nav class="mobile-nav" id="mobileNav">
   <a href="#feature" class="mobile-link">施術の特徴</a>
   <a href="#voice" class="mobile-link">お客様の声</a>
@@ -1069,10 +844,8 @@
     </div>
     <p class="hero-catch">薬なし・副作用なし・身体に優しい発毛ケア</p>
     <h1 class="hero-title">
-      最短5日で<br>
-      <em>発毛を実感。</em>
-      卒業できる<br>薄毛治療。
-    </h1>
+      最短5日で <em>発毛を実感。</em>
+      卒業できる薄毛治療。</h1>
     <p class="hero-sub">
       「年齢のせいだから仕方ない」と<br>
       あきらめていませんか？<br>
@@ -1099,13 +872,8 @@
     </div>
   </div>
   <div class="hero-right">
-    <img
-      src="https://raw.githubusercontent.com/jitianbeiren-prog/shinq/main/images/aquainnai.jpg"
-      alt="アクア鍼灸整骨院 院内"
-      class="hero-img"
-    >
+    <img src="https://raw.githubusercontent.com/jitianbeiren-prog/shinq/main/images/aquainnai.jpg" alt="アクア鍼灸整骨院 院内" class="hero-img">
     <div class="hero-overlay"></div>
-    <div class="hero-vertical-text">Aqua Acupuncture Clinic — Hair Regeneration</div>
   </div>
 </section>
 
@@ -1125,30 +893,12 @@
       アクア鍼灸整骨院は、そのすべての悩みに寄り添います。
     </p>
     <div class="concern-grid">
-      <div class="concern-item">
-        <div class="concern-check"></div>
-        <p class="concern-text">分け目・頭頂・つむじが<br>気になってきた</p>
-      </div>
-      <div class="concern-item">
-        <div class="concern-check"></div>
-        <p class="concern-text">抜け毛が増えて<br>髪がペタっとする</p>
-      </div>
-      <div class="concern-item">
-        <div class="concern-check"></div>
-        <p class="concern-text">白髪が増えてきた</p>
-      </div>
-      <div class="concern-item">
-        <div class="concern-check"></div>
-        <p class="concern-text">薬を飲むのに<br>抵抗がある</p>
-      </div>
-      <div class="concern-item">
-        <div class="concern-check"></div>
-        <p class="concern-text">冷え性・PMS・自律神経の<br>乱れも気になる</p>
-      </div>
-      <div class="concern-item">
-        <div class="concern-check"></div>
-        <p class="concern-text">クリニックに行く勇気が<br>まだ出ない</p>
-      </div>
+      <div class="concern-item"><div class="concern-check"></div><p class="concern-text">分け目・頭頂・つむじが<br>気になってきた</p></div>
+      <div class="concern-item"><div class="concern-check"></div><p class="concern-text">抜け毛が増えて<br>髪がペタっとする</p></div>
+      <div class="concern-item"><div class="concern-check"></div><p class="concern-text">白髪が増えてきた</p></div>
+      <div class="concern-item"><div class="concern-check"></div><p class="concern-text">薬を飲むのに<br>抵抗がある</p></div>
+      <div class="concern-item"><div class="concern-check"></div><p class="concern-text">冷え性・PMS・自律神経の<br>乱れも気になる</p></div>
+      <div class="concern-item"><div class="concern-check"></div><p class="concern-text">クリニックに行く勇気が<br>まだ出ない</p></div>
     </div>
   </div>
 </section>
@@ -1159,29 +909,19 @@
     <div class="feature-header section-header">
       <div>
         <span class="section-label">Why Aqua</span>
-        <h2 class="section-title-jp" style="color:var(--text)">アクア鍼灸整骨院が<br>選ばれる理由</h2>
+        <h2 class="section-title-jp">アクア鍼灸整骨院が<br>選ばれる理由</h2>
       </div>
-      <div class="section-header-line" style="background:linear-gradient(to right, rgba(201,168,76,0.4), transparent)"></div>
+      <div class="section-header-line"></div>
     </div>
     <div class="feature-main">
       <div class="feature-img-wrap">
-        <img
-          src="https://raw.githubusercontent.com/jitianbeiren-prog/shinq/main/images/aquarei1.jpg"
-          alt="施術の様子"
-          class="feature-img-main"
-        >
-        <img
-          src="https://raw.githubusercontent.com/jitianbeiren-prog/shinq/main/images/aquarei2.jpg"
-          alt="施術の様子"
-          class="feature-img-accent"
-        >
+        <img src="https://raw.githubusercontent.com/jitianbeiren-prog/shinq/main/images/aquarei1.jpg" alt="施術の様子" class="feature-img-main">
+        <img src="https://raw.githubusercontent.com/jitianbeiren-prog/shinq/main/images/aquarei2.jpg" alt="施術の様子" class="feature-img-accent">
       </div>
       <div class="feature-content">
         <span class="feature-tag">POINT 01</span>
         <h3 class="feature-title">最先端の毛根再生技術 ×<br>東洋医学のハイブリッド療法</h3>
-        <p class="feature-text">
-          薬で無理に増やすのではなく、ヒト幹細胞培養再生美容液をプラズマで頭皮の奥まで導入。イオン導入の約30倍の浸透率で、毛根幹細胞に直接アプローチします。さらに育毛鍼と東洋医学による根本療法を組み合わせた独自のハイブリッド療法で、通常のAGA・FAGAであれば最短5〜7日で発毛をご確認いただけます。
-        </p>
+        <p class="feature-text">薬で無理に増やすのではなく、ヒト幹細胞培養再生美容液をプラズマで頭皮の奥まで導入。イオン導入の約30倍の浸透率で、毛根幹細胞に直接アプローチします。さらに育毛鍼と東洋医学による根本療法を組み合わせた独自のハイブリッド療法で、通常のAGA・FAGAであれば最短5〜7日で発毛をご確認いただけます。</p>
         <div class="feature-point">
           <div class="feature-point-num">30×</div>
           <div class="feature-point-text">イオン導入と比べて<br><strong>約30倍の浸透率</strong>を誇るプラズマ導入技術</div>
@@ -1189,31 +929,11 @@
       </div>
     </div>
     <div class="cares-grid">
-      <div class="care-card">
-        <div class="care-num">01</div>
-        <div class="care-title">早期実感を目指した<br>薄毛ケア設計</div>
-        <div class="care-text">最短5日で発毛確認。業界最短クラスの実感スピード。</div>
-      </div>
-      <div class="care-card">
-        <div class="care-num">02</div>
-        <div class="care-title">多角的アプローチで<br>薄毛に対応</div>
-        <div class="care-text">育毛鍼・血流改善・再生美容を組み合わせた複合ケア。</div>
-      </div>
-      <div class="care-card">
-        <div class="care-num">03</div>
-        <div class="care-title">浸透率にこだわった<br>再生美容施術</div>
-        <div class="care-text">プラズマ導入で頭皮の奥まで有効成分を届ける。</div>
-      </div>
-      <div class="care-card">
-        <div class="care-num">04</div>
-        <div class="care-title">髪が育つ土台から<br>整える薄毛ケア</div>
-        <div class="care-text">血流・神経・身体全体から発毛力を呼び戻す。</div>
-      </div>
-      <div class="care-card">
-        <div class="care-num">05</div>
-        <div class="care-title">薄毛経験者だからこその<br>共感と提案</div>
-        <div class="care-text">院長自身が薄毛に悩んだ経験。気持ちに寄り添う。</div>
-      </div>
+      <div class="care-card"><div class="care-num">01</div><div class="care-title">早期実感を目指した<br>薄毛ケア設計</div><div class="care-text">最短5日で発毛確認。業界最短クラスの実感スピード。</div></div>
+      <div class="care-card"><div class="care-num">02</div><div class="care-title">多角的アプローチで<br>薄毛に対応</div><div class="care-text">育毛鍼・血流改善・再生美容を組み合わせた複合ケア。</div></div>
+      <div class="care-card"><div class="care-num">03</div><div class="care-title">浸透率にこだわった<br>再生美容施術</div><div class="care-text">プラズマ導入で頭皮の奥まで有効成分を届ける。</div></div>
+      <div class="care-card"><div class="care-num">04</div><div class="care-title">髪が育つ土台から<br>整える薄毛ケア</div><div class="care-text">血流・神経・身体全体から発毛力を呼び戻す。</div></div>
+      <div class="care-card"><div class="care-num">05</div><div class="care-title">薄毛経験者だからこその<br>共感と提案</div><div class="care-text">院長自身が薄毛に悩んだ経験。気持ちに寄り添う。</div></div>
     </div>
   </div>
 </section>
@@ -1229,22 +949,10 @@
       <div class="section-header-line"></div>
     </div>
     <div class="results-grid">
-      <div class="result-card">
-        <img src="https://raw.githubusercontent.com/jitianbeiren-prog/shinq/main/images/aquarei1.jpg" alt="ビフォーアフター 症例1" class="result-img">
-        <div class="result-caption"><div class="result-caption-dot"></div><span class="result-caption-text">症例① — 施術前後の変化</span></div>
-      </div>
-      <div class="result-card">
-        <img src="https://raw.githubusercontent.com/jitianbeiren-prog/shinq/main/images/aquarei2.jpg" alt="ビフォーアフター 症例2" class="result-img">
-        <div class="result-caption"><div class="result-caption-dot"></div><span class="result-caption-text">症例② — 施術前後の変化</span></div>
-      </div>
-      <div class="result-card">
-        <img src="https://raw.githubusercontent.com/jitianbeiren-prog/shinq/main/images/aquarei3.jpg" alt="ビフォーアフター 症例3" class="result-img">
-        <div class="result-caption"><div class="result-caption-dot"></div><span class="result-caption-text">症例③ — 施術前後の変化</span></div>
-      </div>
-      <div class="result-card">
-        <img src="https://raw.githubusercontent.com/jitianbeiren-prog/shinq/main/images/aquarei4.jpg" alt="ビフォーアフター 症例4" class="result-img">
-        <div class="result-caption"><div class="result-caption-dot"></div><span class="result-caption-text">症例④ — 施術前後の変化</span></div>
-      </div>
+      <div class="result-card"><img src="https://raw.githubusercontent.com/jitianbeiren-prog/shinq/main/images/aquarei1.jpg" alt="症例1" class="result-img"><div class="result-caption"><div class="result-caption-dot"></div><span class="result-caption-text">症例① — 施術前後の変化</span></div></div>
+      <div class="result-card"><img src="https://raw.githubusercontent.com/jitianbeiren-prog/shinq/main/images/aquarei2.jpg" alt="症例2" class="result-img"><div class="result-caption"><div class="result-caption-dot"></div><span class="result-caption-text">症例② — 施術前後の変化</span></div></div>
+      <div class="result-card"><img src="https://raw.githubusercontent.com/jitianbeiren-prog/shinq/main/images/aquarei3.jpg" alt="症例3" class="result-img"><div class="result-caption"><div class="result-caption-dot"></div><span class="result-caption-text">症例③ — 施術前後の変化</span></div></div>
+      <div class="result-card"><img src="https://raw.githubusercontent.com/jitianbeiren-prog/shinq/main/images/aquarei4.jpg" alt="症例4" class="result-img"><div class="result-caption"><div class="result-caption-dot"></div><span class="result-caption-text">症例④ — 施術前後の変化</span></div></div>
     </div>
   </div>
 </section>
@@ -1264,28 +972,19 @@
         <div class="voice-quote">"</div>
         <div class="voice-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
         <p class="voice-text">50代の頃から分け目が気になり悩んでいました。薬に抵抗があり迷っていたところ紹介いただき来院。先生がとても話しやすく、施術も丁寧に説明してくださり安心できました。想像より痛くなく、施術後はぐっすり眠れました。月2回通うことで長年の悩みが解消できると実感しています。</p>
-        <div class="voice-author">
-          <div class="voice-avatar">は</div>
-          <div><div class="voice-name">はるちゃん 様</div><div class="voice-meta">女性・60代 ／ 2026.03.07</div></div>
-        </div>
+        <div class="voice-author"><div class="voice-avatar">は</div><div><div class="voice-name">はるちゃん 様</div><div class="voice-meta">女性・60代 ／ 2026.03.07</div></div></div>
       </div>
       <div class="voice-card">
         <div class="voice-quote">"</div>
         <div class="voice-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
         <p class="voice-text">昨年夏から抜け毛が酷く悩んでいました。冷え性やPMSもあり東洋医学に興味があって探していたところ、こちらを見つけました。緊張しましたが優しい先生で安心できました。日頃の生活習慣についても丁寧に教えていただき、これを機に自分の体に向き合いたいと思います。</p>
-        <div class="voice-author">
-          <div class="voice-avatar">マ</div>
-          <div><div class="voice-name">マリー 様</div><div class="voice-meta">女性・20代 ／ 2026.03.14</div></div>
-        </div>
+        <div class="voice-author"><div class="voice-avatar">マ</div><div><div class="voice-name">マリー 様</div><div class="voice-meta">女性・20代 ／ 2026.03.14</div></div></div>
       </div>
       <div class="voice-card">
         <div class="voice-quote">"</div>
         <div class="voice-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
         <p class="voice-text">「5日で発毛」体験ができると知人に聞いて受けてみたら、本当にピンピンと生えてきたので驚きました！1回受けただけでも効果がわかりました。脱毛からの年月が短いほど効果も早いと聞いたので息子にも教えてあげたいです。</p>
-        <div class="voice-author">
-          <div class="voice-avatar">ま</div>
-          <div><div class="voice-name">まきちゃん 様</div><div class="voice-meta">女性・70代以上 ／ 2026.03.11</div></div>
-        </div>
+        <div class="voice-author"><div class="voice-avatar">ま</div><div><div class="voice-name">まきちゃん 様</div><div class="voice-meta">女性・70代以上 ／ 2026.03.11</div></div></div>
       </div>
     </div>
   </div>
@@ -1296,9 +995,9 @@
   <div class="menu-inner">
     <div class="menu-header">
       <span class="section-label">Menu &amp; Price</span>
-      <div class="section-header" style="margin-top:12px;margin-bottom:0">
-        <h2 class="section-title-jp" style="color:var(--text)">施術メニュー・料金</h2>
-        <div class="section-header-line" style="background:linear-gradient(to right, rgba(201,168,76,0.4), transparent)"></div>
+      <div class="section-header" style="margin-top:10px;margin-bottom:0">
+        <h2 class="section-title-jp">施術メニュー・料金</h2>
+        <div class="section-header-line"></div>
       </div>
     </div>
     <div class="menu-cards">
@@ -1332,11 +1031,7 @@
 <section class="doctor" id="doctor">
   <div class="doctor-inner">
     <div class="doctor-img-wrap">
-      <img
-        src="https://raw.githubusercontent.com/jitianbeiren-prog/shinq/main/images/aquasensei.jpg"
-        alt="院長 中野 卓治"
-        class="doctor-img"
-      >
+      <img src="https://raw.githubusercontent.com/jitianbeiren-prog/shinq/main/images/aquasensei.jpg" alt="院長 中野 卓治" class="doctor-img">
       <div class="doctor-img-label">院長　中野 卓治</div>
     </div>
     <div class="doctor-content">
@@ -1364,20 +1059,14 @@
     <div>
       <div class="access-header">
         <span class="section-label">Access &amp; Hours</span>
-        <div class="section-header" style="margin-top:12px;margin-bottom:0">
-          <h2 class="section-title-jp" style="color:var(--text)">アクセス・営業時間</h2>
-          <div class="section-header-line" style="background:linear-gradient(to right, rgba(201,168,76,0.4), transparent)"></div>
+        <div class="section-header" style="margin-top:10px;margin-bottom:0">
+          <h2 class="section-title-jp">アクセス・営業時間</h2>
+          <div class="section-header-line"></div>
         </div>
       </div>
       <div class="access-info">
-        <div class="access-row">
-          <span class="access-key">住所</span>
-          <span class="access-val">〒589-0006<br>大阪府大阪狭山市金剛1-11-3 福富マンション</span>
-        </div>
-        <div class="access-row">
-          <span class="access-key">最寄り駅</span>
-          <span class="access-val">近鉄長野線 金剛駅 徒歩圏内</span>
-        </div>
+        <div class="access-row"><span class="access-key">住所</span><span class="access-val">〒589-0006<br>大阪府大阪狭山市金剛1-11-3 福富マンション</span></div>
+        <div class="access-row"><span class="access-key">最寄り駅</span><span class="access-val">近鉄長野線 金剛駅 徒歩圏内</span></div>
         <div class="access-row">
           <span class="access-key">営業時間</span>
           <span class="access-val">
@@ -1388,24 +1077,16 @@
             </div>
           </span>
         </div>
-        <div class="access-row">
-          <span class="access-key">駐車場</span>
-          <span class="access-val">あり</span>
-        </div>
-        <div class="access-row">
-          <span class="access-key">お支払い</span>
-          <span class="access-val">現金 / VISA / MASTER / AMEX / JCB</span>
-        </div>
+        <div class="access-row"><span class="access-key">駐車場</span><span class="access-val">あり</span></div>
+        <div class="access-row"><span class="access-key">お支払い</span><span class="access-val">現金 / VISA / MASTER / AMEX / JCB</span></div>
       </div>
     </div>
     <div>
       <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3282.5!2d135.5600534!3d34.4929307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000d6f898d2d649%3A0x913fbec228de65e1!2z44Ki44Kv44Ka6Y284biw5pW06qqo6Zmi!5e0!3m2!1sja!2sjp!4v1712400000000"
-        width="100%"
-        height="320"
-        style="border:1px solid rgba(201,168,76,0.2);display:block;filter:grayscale(20%);"
-        allowfullscreen=""
-        loading="lazy"
+        width="100%" height="320"
+        style="border:1px solid #e8e0e4;display:block;"
+        allowfullscreen="" loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
         title="アクア鍼灸整骨院 地図"
       ></iframe>
@@ -1429,9 +1110,7 @@
       <div class="cta-price-sub">カウンセリング＋頭皮診断＋毛根診断＋施術体験 90分</div>
     </div>
     <div class="cta-btn">
-      <a href="https://www.shinq-compass.jp/salon/reserve/pv/count/38354?menuid=72093" class="btn-large">
-        今すぐ予約する
-      </a>
+      <a href="https://www.shinq-compass.jp/salon/reserve/pv/count/38354?menuid=72093" class="btn-large">今すぐ予約する</a>
     </div>
   </div>
 </section>
@@ -1443,17 +1122,13 @@
 </footer>
 
 <script>
-  // ハンバーガーメニュー
   const hamburger = document.getElementById('hamburger');
   const mobileNav = document.getElementById('mobileNav');
-
   hamburger.addEventListener('click', () => {
     const isOpen = mobileNav.classList.toggle('open');
     hamburger.classList.toggle('open', isOpen);
     document.body.style.overflow = isOpen ? 'hidden' : '';
   });
-
-  // モバイルメニューのリンクをタップしたら閉じる
   document.querySelectorAll('.mobile-link').forEach(link => {
     link.addEventListener('click', () => {
       mobileNav.classList.remove('open');
