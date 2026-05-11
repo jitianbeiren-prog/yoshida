@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>アクア鍼灸整骨院 | 薬なしで発毛・育毛 最短5日で実感</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700;800&family=Shippori+Mincho:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700;800&family=Shippori+Mincho:wght@400;600;800&family=M+PLUS+Rounded+1c:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --pink: #AC4978;
@@ -15,9 +15,9 @@
     --white: #ffffff;
     --off-white: #fafafa;
     --gray-bg: #f7f7f7;
-    --text: #6B6464;
-    --text-dark: #3a3232;
-    --text-light: #9e9494;
+    --text: #3d3535;
+    --text-dark: #1e1818;
+    --text-light: #6b6060;
     --border: #e8e0e4;
     --header-h: 64px;
   }
@@ -35,7 +35,7 @@
   .section-label {
     font-family: 'Noto Serif JP', serif;
     font-style: italic;
-    font-size: 0.72rem;
+    font-size: 0.82rem;
     letter-spacing: 0.22em;
     color: var(--pink);
     text-transform: uppercase;
@@ -201,10 +201,11 @@
     width: fit-content;
   }
   .hero-badge span {
+    font-family: 'M PLUS Rounded 1c', sans-serif;
     font-size: 0.68rem;
     letter-spacing: 0.18em;
     color: var(--pink);
-    font-style: italic;
+    font-style: normal;
   }
   .hero-catch {
     font-family: 'Noto Serif JP', serif;
@@ -229,8 +230,8 @@
     display: block;
   }
   .hero-sub {
-    font-size: 0.83rem;
-    color: var(--text-light);
+    font-size: 0.95rem;
+    color: var(--text);
     letter-spacing: 0.1em;
     line-height: 2.1;
     margin-bottom: 44px;
@@ -306,7 +307,7 @@
   .concern { background: var(--gray-bg); padding: 96px 80px; }
   .concern-inner { max-width: 1000px; margin: 0 auto; }
   .concern-lead {
-    font-size: 0.92rem;
+    font-size: 1.02rem;
     color: var(--text);
     line-height: 2.5;
     letter-spacing: 0.07em;
@@ -333,7 +334,7 @@
     flex-shrink: 0; margin-top: 2px;
   }
   .concern-check::after { content: '✓'; color: var(--pink); font-size: 0.68rem; }
-  .concern-text { font-size: 0.82rem; color: var(--text); letter-spacing: 0.06em; line-height: 1.75; }
+  .concern-text { font-family: 'M PLUS Rounded 1c', sans-serif; font-size: 0.92rem; color: var(--text); letter-spacing: 0.06em; line-height: 1.85; font-weight: 400; }
 
   /* ===== FEATURE ===== */
   .feature { background: var(--white); padding: 96px 80px; }
@@ -379,7 +380,7 @@
     margin-bottom: 18px;
   }
   .feature-text {
-    font-size: 0.82rem;
+    font-size: 0.92rem;
     line-height: 2.2;
     color: var(--text);
     letter-spacing: 0.04em;
@@ -402,7 +403,7 @@
     font-weight: 700;
   }
   .feature-point-text {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     color: var(--text);
     letter-spacing: 0.07em;
     line-height: 1.75;
@@ -441,8 +442,8 @@
     margin-bottom: 10px;
     font-weight: 700;
   }
-  .care-title { font-size: 0.78rem; font-weight: 600; color: var(--text-dark); letter-spacing: 0.07em; line-height: 1.55; margin-bottom: 8px; }
-  .care-text { font-size: 0.68rem; color: var(--text-light); line-height: 1.75; letter-spacing: 0.03em; }
+  .care-title { font-size: 0.88rem; font-weight: 600; color: var(--text-dark); letter-spacing: 0.07em; line-height: 1.55; margin-bottom: 8px; }
+  .care-text { font-family: 'M PLUS Rounded 1c', sans-serif; font-size: 0.8rem; color: var(--text); line-height: 1.8; letter-spacing: 0.03em; }
 
   /* ===== RESULTS ===== */
   .results { background: var(--gray-bg); padding: 96px 80px; }
@@ -488,7 +489,7 @@
   }
   .voice-stars { display: flex; gap: 3px; margin-bottom: 14px; }
   .voice-stars span { color: var(--pink); font-size: 0.85rem; }
-  .voice-text { font-size: 0.78rem; line-height: 2.05; color: var(--text); letter-spacing: 0.04em; margin-bottom: 22px; }
+  .voice-text { font-size: 0.88rem; line-height: 2.1; color: var(--text); letter-spacing: 0.04em; margin-bottom: 22px; }
   .voice-author {
     display: flex; align-items: center; gap: 11px;
     padding-top: 16px;
@@ -504,8 +505,8 @@
     flex-shrink: 0;
     border: 1px solid rgba(172,73,120,0.2);
   }
-  .voice-name { font-size: 0.73rem; color: var(--text-dark); letter-spacing: 0.1em; font-weight: 600; }
-  .voice-meta { font-size: 0.62rem; color: var(--text-light); margin-top: 2px; }
+  .voice-name { font-size: 0.82rem; color: var(--text-dark); letter-spacing: 0.1em; font-weight: 600; }
+  .voice-meta { font-size: 0.72rem; color: var(--text-light); margin-top: 2px; }
 
   /* ===== MENU ===== */
   .menu { background: var(--gray-bg); padding: 96px 80px; }
@@ -557,7 +558,7 @@
     line-height: 1.55;
     margin-bottom: 6px;
   }
-  .menu-desc { font-size: 0.7rem; color: var(--text-light); letter-spacing: 0.05em; line-height: 1.75; }
+  .menu-desc { font-size: 0.82rem; color: var(--text); letter-spacing: 0.05em; line-height: 1.8; }
   .menu-price-wrap { text-align: right; flex-shrink: 0; }
   .menu-price {
     font-family: 'Noto Serif JP', serif;
@@ -567,7 +568,7 @@
     font-weight: 700;
   }
   .menu-price small { font-size: 0.85rem; color: var(--text-light); font-weight: 400; }
-  .menu-time { font-size: 0.68rem; color: var(--text-light); margin-top: 5px; letter-spacing: 0.08em; }
+  .menu-time { font-size: 0.78rem; color: var(--text-light); margin-top: 5px; letter-spacing: 0.08em; }
 
   /* ===== DOCTOR ===== */
   .doctor { background: var(--pink); padding: 96px 80px; }
@@ -603,9 +604,9 @@
   }
   .doctor-name-kana { font-size: 0.68rem; color: rgba(255,255,255,0.65); letter-spacing: 0.2em; margin-bottom: 28px; }
   .doctor-message {
-    font-size: 0.82rem;
+    font-size: 0.92rem;
     line-height: 2.4;
-    color: rgba(255,255,255,0.82);
+    color: rgba(255,255,255,0.92);
     letter-spacing: 0.05em;
     margin-bottom: 32px;
     border-left: 2px solid rgba(255,255,255,0.3);
@@ -614,8 +615,8 @@
   .licenses { display: flex; flex-direction: column; gap: 8px; }
   .license-item {
     display: flex; align-items: center; gap: 10px;
-    font-size: 0.7rem;
-    color: rgba(255,255,255,0.65);
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.88);
     letter-spacing: 0.08em;
   }
   .license-dot { width: 4px; height: 4px; background: rgba(255,255,255,0.6); border-radius: 50%; flex-shrink: 0; }
@@ -636,18 +637,18 @@
     border-bottom: 1px solid var(--border);
   }
   .access-key {
-    font-size: 0.68rem;
+    font-size: 0.8rem;
     letter-spacing: 0.14em;
     color: var(--pink);
     font-style: italic;
     width: 80px; flex-shrink: 0;
     padding-top: 2px;
   }
-  .access-val { font-size: 0.8rem; color: var(--text); letter-spacing: 0.05em; line-height: 1.85; }
+  .access-val { font-size: 0.9rem; color: var(--text); letter-spacing: 0.05em; line-height: 1.85; }
   .hours-grid {
     display: grid; grid-template-columns: auto 1fr;
     gap: 5px 14px;
-    font-size: 0.78rem; color: var(--text);
+    font-size: 0.88rem; color: var(--text);
   }
   .hours-grid .day { color: var(--text-light); }
   .hours-grid .time { font-weight: 600; color: var(--text-dark); }
@@ -678,8 +679,8 @@
     margin-bottom: 16px;
   }
   .cta-sub {
-    font-size: 0.8rem;
-    color: var(--text-light);
+    font-size: 0.9rem;
+    color: var(--text);
     letter-spacing: 0.09em;
     line-height: 2;
     margin-bottom: 44px;
@@ -755,8 +756,9 @@
     nav { display: none; }
     .hamburger { display: flex; }
     .hero { grid-template-columns: 1fr; }
-    .hero-left { padding: 48px 24px 56px; }
-    .hero-right { display: none; }
+    .hero-left { padding: 40px 24px 52px; order: 2; }
+    .hero-right { display: block; order: 1; min-height: 260px; max-height: 340px; }
+    .hero-overlay { background: linear-gradient(to bottom, transparent 40%, rgba(255,255,255,0.85) 80%, var(--white) 100%); }
     .hero-numbers { flex-wrap: wrap; gap: 20px 28px; }
     .concern, .feature, .results, .voice, .menu, .doctor, .access, .cta-section { padding: 72px 24px; }
     .concern-grid { grid-template-columns: repeat(2,1fr); }
@@ -776,9 +778,10 @@
     :root { --header-h: 56px; }
     .logo { font-size: 0.85rem; }
     .logo small { font-size: 0.6rem; }
-    .hero-left { padding: 40px 20px 48px; }
+    .hero-right { min-height: 220px; max-height: 280px; }
+    .hero-left { padding: 32px 20px 44px; }
     .hero-title { font-size: 1.62rem; }
-    .hero-sub { font-size: 0.78rem; }
+    .hero-sub { font-size: 0.88rem; }
     .hero-cta-wrap { max-width: 100%; }
     .btn-primary, .btn-secondary { font-size: 0.82rem; padding: 14px 22px; }
     .hero-numbers { gap: 16px 22px; }
@@ -820,7 +823,7 @@
     <a href="#menu">料金</a>
     <a href="#doctor">院長</a>
     <a href="#access">アクセス</a>
-    <a href="#cta" class="header-cta">無料体験予約</a>
+    <a href="#cta" class="header-cta">初回体験予約</a>
   </nav>
   <button class="hamburger" id="hamburger" aria-label="メニュー">
     <span></span><span></span><span></span>
@@ -833,14 +836,14 @@
   <a href="#menu" class="mobile-link">料金</a>
   <a href="#doctor" class="mobile-link">院長</a>
   <a href="#access" class="mobile-link">アクセス</a>
-  <a href="#cta" class="mobile-cta mobile-link">無料体験予約（初回¥4,980）</a>
+  <a href="#cta" class="mobile-cta mobile-link">初回体験予約</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
     <div class="hero-badge">
-      <span>◆ 金剛駅から徒歩圏内 ◆ 大阪狭山市</span>
+      <span>◆ 南海高野線 金剛駅 徒歩5分 ◆ 大阪狭山市</span>
     </div>
     <p class="hero-catch">薬なし・副作用なし・身体に優しい発毛ケア</p>
     <h1 class="hero-title">
@@ -1063,8 +1066,8 @@
         </div>
       </div>
       <div class="access-info">
-        <div class="access-row"><span class="access-key">住所</span><span class="access-val">〒589-0006<br>大阪府大阪狭山市金剛1-11-3 福富マンション</span></div>
-        <div class="access-row"><span class="access-key">最寄り駅</span><span class="access-val">近鉄長野線 金剛駅 徒歩圏内</span></div>
+        <div class="access-row"><span class="access-key">住所</span><span class="access-val">〒589-0006<br>大阪府大阪狭山市金剛１丁目１１−３</span></div>
+        <div class="access-row"><span class="access-key">最寄り駅</span><span class="access-val">南海高野線 金剛駅 徒歩5分</span></div>
         <div class="access-row">
           <span class="access-key">営業時間</span>
           <span class="access-val">
